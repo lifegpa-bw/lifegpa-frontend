@@ -18,7 +18,7 @@ const OnboardingLayout = props => {
   const classes = layoutClasses(theme)
 
   return (
-    <Container className={classes.root} maxWidth='false'>
+    <Container className={classes.root} maxWidth={false}>
       {props.children}
     </Container>
   )

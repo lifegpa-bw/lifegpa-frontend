@@ -9,5 +9,9 @@ export default createMuiTheme({
       main: '#6807F9'
     }
   },
+  typography: {
+    // set base font-size on html element to 10px
+    htmlFontSize: 10
+  },
   overrides: {}
 })
