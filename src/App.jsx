@@ -1,10 +1,17 @@
 import React from 'react'
-import './App.css'
+import { Route, Switch } from 'react-router-dom'
+import { PrivateRoute } from './components'
+import { Launch, Login, Register, Dashboard } from './pages'
 
 function App() {
   return (
     <div className='App'>
-      <h1>Test!</h1>
+      <Switch>
+        <Route exact path='/' component={Launch} />
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
+        <PrivateRoute to='/dashboard' component={Dashboard} />
+      </Switch>
     </div>
   )
 }
