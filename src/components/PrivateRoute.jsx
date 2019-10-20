@@ -12,8 +12,8 @@ export default function PrivateRoute({ component: Component, ...rest }) {
         localStorage.getItem('token') ? (
           <Component {...props} />
         ) : (
-          // else redirect to /login
-          <Redirect to='/login' />
+          // else redirect to launch screen
+          <Redirect to='/' />
         )
       }
     />

@@ -5,6 +5,10 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import rootReducer from './reducers'
+
+import Theme from './mui/Theme'
+import { MuiThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import App from './App'
 import './styles/index.css'
 
@@ -41,9 +45,12 @@ if (process.env.NODE_ENV === 'production') {
 
 ReactDOM.render(
   <Provider store={rootStore}>
-    <Router>
-      <App />
-    </Router>
+    <MuiThemeProvider theme={Theme}>
+      <CssBaseline />
+      <Router>
+        <App />
+      </Router>
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 )
