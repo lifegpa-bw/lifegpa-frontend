@@ -1,4 +1,4 @@
 import PrivateRoute from './PrivateRoute'
-import Launch from '../pages/Launch'
+import OnboardingLayout from './OnboardingLayout'
 
-export { PrivateRoute, Launch }
+export { PrivateRoute, OnboardingLayout }
