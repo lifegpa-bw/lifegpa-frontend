@@ -1,16 +1,29 @@
 import React from 'react'
 import { OnboardingLayout } from '../components'
-import { Button } from '@material-ui/core'
+import { Button, Grid } from '@material-ui/core'
 
 const Launch = () => {
   return (
     <OnboardingLayout>
-      <Button variant='contained' color='primary'>
-        Create Account
-      </Button>
-      <Button variant='outlined' color='primary'>
-        Login
-      </Button>
+      <Grid
+        container
+        spacing='2'
+        alignContent='center'
+        direction='column'
+        justify='center'
+      >
+        <Grid item>
+          <Button variant='contained' color='primary'>
+            Create Account
+          </Button>
+        </Grid>
+
+        <Grid item>
+          <Button fullWidth variant='outlined' color='primary'>
+            Login
+          </Button>
+        </Grid>
+      </Grid>
     </OnboardingLayout>
   )
 }
