@@ -1,18 +1,23 @@
 import React from "react";
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import NavBar from "../components/NavBar";
 
 const Launch = props => {
   return( 
+    <div>
+    <NavBar/>
     <Main>
-        <Title>LifeGPA: Welcome to the New You!</Title>
-        <Buttonc>
-          <Link to ="/register"><Button className = "buttonclass">Register</Button></Link>
-        </Buttonc>
-        <Buttonc>
-          <Link to ="/login"><Button className = "buttonclass">Login</Button></Link>
-        </Buttonc>
-   </Main>
+          <Title>LifeGPA: Welcome to the New You!</Title>
+          <Buttonc>
+            <Link to ="/register"><Button className = "buttonclass">Register</Button></Link>
+          </Buttonc>
+          <Buttonc>
+            <Link to ="/login"><Button className = "buttonclass">Login</Button></Link>
+          </Buttonc>
+    </Main>
+    </div>
+
     
   )
 }
@@ -25,7 +30,7 @@ export default Launch;
 const Main = styled.div`
 display: flex;
 border: 1px solid black;
-height: 100vh;
+height: 88vh;
 flex-direction: column;
 justify-content: center;
 align-items: center;
