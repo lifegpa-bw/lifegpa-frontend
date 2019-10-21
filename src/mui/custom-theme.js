@@ -9,8 +9,8 @@ export default createMuiTheme({
       main: '#6807F9'
     },
     background: {
-      // default: '#000',
-      // paper: '#cecece'
+      default: '#000',
+      paper: '#cecece'
     },
     text: {
       onDark: '#fff',
