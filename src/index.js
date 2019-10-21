@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import rootReducer from './reducers'
 
-import Theme from './mui/Theme'
+import Theme from './mui/custom-theme'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import App from './App'

@@ -8,7 +8,7 @@ const Launch = () => {
       <Button variant='contained' color='primary'>
         Create Account
       </Button>
-      <Button variant='contained' color='secondary'>
+      <Button variant='outlined' color='primary'>
         Login
       </Button>
     </OnboardingLayout>
