@@ -10,7 +10,8 @@ import {
   InputAdornment,
   CircularProgress,
   Typography,
-  Button
+  Button,
+  Paper
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import {
@@ -85,68 +86,70 @@ const Login = () => {
       }}
     >
       {({ errors }) => (
-        <Form>
-          <TextField
-            id='username'
-            name='username'
-            variant='filled'
-            label='Username'
-            error={!!errors.username}
-            value={credentials.username}
-            onChange={handleChange('username')}
-            helperText={errors.username}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position='start'>
-                  <AccountCircleTwoTone />
-                </InputAdornment>
-              )
-            }}
-          />
+        <Box component={Paper} p={2}>
+          <Form>
+            <Grid container spacing={2}>
+              <Grid item xs={12} lg={6}>
+                <TextField
+                  id='username'
+                  name='username'
+                  variant='filled'
+                  label='Username'
+                  error={!!errors.username}
+                  value={credentials.username}
+                  onChange={handleChange('username')}
+                  helperText={errors.username}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position='start'>
+                        <AccountCircleTwoTone />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </Grid>
 
-          <TextField
-            id='password'
-            error={!!errors.password}
-            variant='filled'
-            type={showPassword ? 'text' : 'password'}
-            label='Password'
-            value={credentials.password}
-            onChange={handleChange('password')}
-            helperText={errors.password}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position='start'>
-                  <IconButton
-                    edge='start'
-                    aria-label='toggle password visibility'
-                    onClick={handleClickPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          />
+              <Grid item xs={12} lg={6}>
+                <TextField
+                  id='password'
+                  error={!!errors.password}
+                  variant='filled'
+                  type={showPassword ? 'text' : 'password'}
+                  label='Password'
+                  value={credentials.password}
+                  onChange={handleChange('password')}
+                  helperText={errors.password}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position='start'>
+                        <IconButton
+                          edge='start'
+                          aria-label='toggle password visibility'
+                          onClick={handleClickPassword}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </Grid>
+              {!isLoading && (
+                <Button variant='contained' color='primary' type='submit'>
+                  Submit
+                </Button>
+              )}
 
-          {!isLoading && (
-            <Button variant='contained' color='primary' type='submit'>
-              Submit
-            </Button>
-          )}
-
-          {isLoading && (
-            <Button variant='contained' disabled>
-              <CircularProgress color='text.onLight' />
-              &emsp;Logging In...
-            </Button>
-          )}
-          <div>
-            <p>Errors object</p>
-            <p>{errors.username}</p>
-            <p>{errors.password}</p>
-          </div>
-        </Form>
+              {isLoading && (
+                <Button variant='contained' disabled>
+                  <CircularProgress color='text.onLight' />
+                  &emsp;Logging In...
+                </Button>
+              )}
+            </Grid>
+          </Form>
+        </Box>
       )}
     </Formik>
   )
