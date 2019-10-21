@@ -4,12 +4,11 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 const layoutClasses = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.common.black,
-    minHeight: '100vh',
-    padding: 0,
-    '@media screen and (min-width: 1000px)': {
-      backgroundColor: 'orange'
-    }
+    // backgroundColor: theme.palette.background.default,
+    minHeight: '100vh'
+    // '@media screen and (min-width: 1000px)': {
+    // backgroundColor: 'orange'
+    // }
   }
 }))
 

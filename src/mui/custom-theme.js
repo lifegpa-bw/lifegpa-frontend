@@ -9,7 +9,12 @@ export default createMuiTheme({
       main: '#6807F9'
     },
     background: {
-      default: '#cecece'
+      // default: '#000',
+      // paper: '#cecece'
+    },
+    text: {
+      onDark: '#fff',
+      onLight: '#000'
     }
   },
   typography: {
