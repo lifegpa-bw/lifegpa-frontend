@@ -1,48 +1,50 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { OnboardingLayout } from '../components'
-import { Button, Grid, Typography } from '@material-ui/core'
+import React from "react";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const Launch = () => {
-  const history = useHistory()
-  return (
-    <OnboardingLayout>
-      <Grid
-        container
-        spacing={2}
-        alignContent='center'
-        direction='column'
-        justify='center'
-      >
-        <Grid item>
-          <Typography color='primary' variant='h3' align='center'>
-            Life GPA
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Button
-            fullWidth
-            variant='outlined'
-            color='primary'
-            onClick={() => history.push('/register')}
-          >
-            Create Account
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button
-            fullWidth
-            variant='contained'
-            color='primary'
-            onClick={() => history.push('/login')}
-          >
-            Login
-          </Button>
-        </Grid>
-      </Grid>
-    </OnboardingLayout>
+const Launch = props => {
+  return( 
+    <Main>
+        <Title>LifeGPA: Welcome to the New You!</Title>
+        <Buttonc>
+          <Link to ="/register"><Button className = "buttonclass">Register</Button></Link>
+        </Buttonc>
+        <Buttonc>
+          <Link to ="/login"><Button className = "buttonclass">Login</Button></Link>
+        </Buttonc>
+   </Main>
+    
   )
 }
 
-export default Launch
+
+export default Launch;
+
+//styles
+
+const Main = styled.div`
+display: flex;
+border: 1px solid black;
+height: 100vh;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: #fff;
+
+`
+
+const Title = styled.h3`
+`
+
+const Buttonc = styled.div`
+&: hover .buttonclass{
+background-color: black;
+color: #FFFF00;
+}
+`
+const Button = styled.button`
+&: hover .buttonclass{
+  background-color: black;
+  color: #FFFF00;
+  }
+`

@@ -1,7 +1,17 @@
 import React from 'react'
+import FormikSignup from "../components/RegisterForm";
 
-const Register = () => {
-  return <div>New User Registration</div>
+import { Link } from 'react-router-dom'
+
+const Login = () => {
+  return (
+    <div>
+      <Link to = "/">
+        <h1>Test</h1>
+      </Link>
+      <FormikSignup/>
+    </div>
+  )
 }
 
-export default Register
+export default Login
