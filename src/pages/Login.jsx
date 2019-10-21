@@ -1,11 +1,11 @@
 import React from 'react'
+import { OnboardingLayout, LoginForm } from '../components'
 
 const Login = () => {
   return (
-    <div>
-      Login
-      <p>and stuff</p>
-    </div>
+    <OnboardingLayout>
+      <LoginForm />
+    </OnboardingLayout>
   )
 }
 
