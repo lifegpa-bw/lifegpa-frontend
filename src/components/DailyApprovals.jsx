@@ -128,6 +128,17 @@ export default function DailyApprovals() {
       <p className="daily-report">Daily Report</p>
       <p className="daily-report currDate">{getCurrentDate()}</p>
       <hr />
+
+
+      {state.data.map(report =>
+  <div key={report.id} className={report.done ? `${report.className} report` : `hidden report`}>
+    <div className="reportTitle">
+      {report.title}
     </div>
+    </div>
+      )}
+    </div>
+
+
   )
 }
