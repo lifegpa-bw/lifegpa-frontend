@@ -123,7 +123,23 @@ export default function DailyApprovals() {
 
   const [state, setState] = useState({ data: reports });
 
+  function onYesHandle(id) {
+    setState(state => ({
+      data: state.data.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            className: "done1",
+            done: !item.done,
+          };
+        } else {
+          return item;
+        }
+      })
+    }));
+  }
 
+  
   return (
     <div class="wrapper">
       <p className="daily-report">Daily Report</p>
