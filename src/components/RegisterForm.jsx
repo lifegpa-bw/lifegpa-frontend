@@ -12,31 +12,43 @@ const Register=({errors, touched, status}) => {
           setNewUser([...newUser, status]);
       }
   },[status]);
-
   return(
-
   <Main>
     <Form2>
       <Title>REGISTER</Title>
       <Text>
-        <Input type= "text" name="username" placeholder="Create a Username"/>
+        <Input 
+        type= "text" 
+        name="username" 
+        placeholder="Create a Username"
+        />
           {touched.username && errors.username && (
-            <p>{errors.username}</p>
+            <Errors>{errors.username}</Errors>
                 )}
-        <Input type="password" name="password" placeholder="Create a Password"/>
+        <Input 
+        type="password" 
+        name="password" 
+        placeholder="Create a Password"
+        />
           {touched.password && errors.password && (
-            <p>{errors.password}</p>
+            <Errors>{errors.password}</Errors>
                 )}
-        <Input type="email" name="email" placeholder="Enter Your Email"/>
+        <Input 
+        type="email" 
+        name="email" 
+        placeholder="Enter Your Email"
+        />
           {touched.email && errors.email && (
-            <p>{errors.email}</p>
+            <Errors>{errors.email}</Errors>
                 )}
       </Text>
       <Buttonc>
-        <Button className = "buttonclass">SIGN UP</Button>
+        <Button type="submit" className = "buttonclass">SIGN UP</Button>
       </Buttonc>
     </Form2>
-    <Link1 to ="/login"><Newlink>Already have an account? Click here.</Newlink></Link1>
+    <Link1 to ="/login">
+        <Newlink>Already have an account? Click here.</Newlink>
+    </Link1>
    </Main>
   );
 
@@ -58,7 +70,7 @@ const FormikSignup = withFormik({
       password: Yup.string()
       .required("Password must be entered")       
       .min(4, "must be 4 or more characters")
-      .max(15, 'thats a bit long, make it less than 15 characters'), 
+      .max(15, 'thats a bit long, must be less than 15 characters'), 
       email: Yup.string()
       .required("You must enter a valid email address")
 
@@ -71,10 +83,10 @@ const FormikSignup = withFormik({
       setStatus(event.data);
           props.history.push('/login')
   })
-  .catch(err => console.log(err.e));
+  .catch(error => console.log(error.response));
 
 }
-
+// data above may change
 })(Register);
 console.log(FormikSignup)
 export default FormikSignup
@@ -128,8 +140,10 @@ padding: 5%;
 `
 const Newlink = styled.p`
 font-size: 10px;
-
 `
 const Link1 = styled(Link)`
 color: black;
+`
+const Errors = styled.p`
+font-size: 1rem;
 `

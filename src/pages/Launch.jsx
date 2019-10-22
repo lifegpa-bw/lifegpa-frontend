@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import NavBar from "../components/NavBar";
 
-const Launch = props => {
+const Launch = () => {
   return( 
     <div>
     <NavBar/>

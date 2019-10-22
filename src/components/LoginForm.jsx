@@ -19,20 +19,29 @@ const Login=({errors, touched, status}) => {
       <Form2>
         <Title>LOGIN</Title>
         <Text>
-          <Input type="text" name="username" placeholder="Enter Your Username"/>
+          <Input 
+          type="text" 
+          name="username" 
+          placeholder="Enter Your Username"
+          />
             {touched.username && errors.username && (
-                <p>{errors.username}</p>
+            <Errors>{errors.username}</Errors>
                   )}
-          <Input type="password" name="password" placeholder="Enter Your Password"/>
+          <Input 
+          type="password" 
+          name="password" 
+          placeholder="Enter Your Password"/>
             {touched.password && errors.password && (
-                <p>{errors.password}</p>
+            <Errors>{errors.password}</Errors>
                   )}
         </Text>
         <Buttonc>
-          <Button className = "buttonclass" >LOG IN</Button>
+          <Button type="submit" className = "buttonclass" >LOG IN</Button>
         </Buttonc>
       </Form2>
-      <Link1 to ="/register"><Newlink>Need to create an account? Click here.</Newlink></Link1>
+      <Link1 to ="/register">
+          <Newlink>Need to create an account? Click here.</Newlink>
+      </Link1>
     </Main>
     );
 };
@@ -57,7 +66,7 @@ const FormikLogin = withFormik({
         setStatus(event.data);
         props.history.push('/dashboard')
     })
-    .catch(err => console.log(err.e));
+    .catch(err => console.log(err.response));
 
 }
 
@@ -120,4 +129,8 @@ font-size: 10px;
 
 const Link1 = styled(Link)`
 color: black;
+`
+
+const Errors = styled.p`
+font-size: 1rem;
 `
