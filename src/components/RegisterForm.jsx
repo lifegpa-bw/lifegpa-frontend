@@ -22,15 +22,15 @@ const Register = ({ errors, touched, status }) => {
         <Title>Register</Title>
         <Text>
           <Input type='text' name='username' placeholder='Create a Username' />
-          {touched.username && errors.username && <p>{errors.username}</p>}
+          {touched.username && errors.username && <Errors>{errors.username}</Errors>}
           <Input
             type='password'
             name='password'
             placeholder='Create a Password'
           />
-          {touched.password && errors.password && <p>{errors.password}</p>}
+          {touched.password && errors.password && <Errors>{errors.password}</Errors>}
           <Input type='email' name='email' placeholder='Enter Your Email' />
-          {touched.email && errors.email && <p>{errors.email}</p>}
+          {touched.email && errors.email && <Errors>{errors.email}</Errors>}
         </Text>
         <Buttonc>
           <Button className='buttonclass'>Register</Button>
@@ -128,4 +128,8 @@ const Newlink = styled.p`
 `
 const Link1 = styled(Link)`
   color: black;
+`
+
+const Errors = styled.p`
+font-size: 1rem;
 `

@@ -23,13 +23,13 @@ const Login = ({ errors, touched, status }) => {
             name='username'
             placeholder='Enter Your Username'
           />
-          {touched.username && errors.username && <p>{errors.username}</p>}
+          {touched.username && errors.username && <Errors>{errors.username}</Errors>}
           <Input
             type='password'
             name='password'
             placeholder='Enter Your Password'
           />
-          {touched.password && errors.password && <p>{errors.password}</p>}
+          {touched.password && errors.password && <Errors>{errors.password}</Errors>}
         </Text>
         <Buttonc>
           <Button className='buttonclass'>Login</Button>
