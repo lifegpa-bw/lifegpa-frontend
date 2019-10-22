@@ -27,6 +27,10 @@ const Register=({errors, touched, status}) => {
           {touched.password && errors.password && (
             <p>{errors.password}</p>
                 )}
+        <Input type="email" name="email" placeholder="Enter Your Email"/>
+          {touched.email && errors.email && (
+            <p>{errors.email}</p>
+                )}
       </Text>
       <Buttonc>
         <Button className = "buttonclass">SIGN UP</Button>
@@ -39,10 +43,11 @@ const Register=({errors, touched, status}) => {
   
 };
 const FormikSignup = withFormik({
-  mapPropsToValues({username,password}){
+  mapPropsToValues({username,password, email}){
       return {
           username: username || "",
-          password: password || ""
+          password: password || "",
+          email: email || ""
       };
   },
   validationSchema: Yup.object().shape({
@@ -53,7 +58,9 @@ const FormikSignup = withFormik({
       password: Yup.string()
       .required("Password must be entered")       
       .min(4, "must be 4 or more characters")
-      .max(15, 'thats a bit long, make it less than 15 characters')
+      .max(15, 'thats a bit long, make it less than 15 characters'), 
+      email: Yup.string()
+      .required("You must enter a valid email address")
 
   }),    
   handleSubmit(values,  {props, setStatus }){
@@ -75,7 +82,7 @@ export default FormikSignup
 //styles
 
 const Main = styled.div`
-height: 100vh;
+height: 87vh;
 background-color: #fff;
 display: flex;
 align-items: center;
