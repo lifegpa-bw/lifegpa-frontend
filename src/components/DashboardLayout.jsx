@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useHistory } from 'react-router-dom'
 
 // Mui
 import {
@@ -17,6 +17,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Button,
   Box
 } from '@material-ui/core'
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
@@ -46,6 +47,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     // app bar is always above menu
     zIndex: theme.zIndex.drawer + 1,
+    minHeight: theme.mixins.toolbar.minHeight,
     backgroundColor: theme.palette.common.black
   },
   menuButton: {
@@ -57,14 +59,19 @@ const useStyles = makeStyles(theme => ({
   },
   // sets the height based on screen size
   toolbar: {
-    minHeight: theme.mixins.toolbar.minHeight,
-    backgroundColor: theme.palette.common.black,
-    boxShadow: theme.shadows[4]
+    marginTop: theme.mixins.toolbar.minHeight
   },
   drawerPaper: {
+    marginTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
     borderRight: 0,
     backgroundColor: theme.palette.grey[500]
+  },
+  modal: {
+    top: theme.mixins.toolbar.minHeight
+  },
+  backdrop: {
+    top: theme.mixins.toolbar.minHeight
   },
   content: {
     // add margin to content  md up
@@ -84,6 +91,9 @@ const useStyles = makeStyles(theme => ({
     // background: `linear-gradient(0deg,  orange 15%,  ${theme.palette.primary.light} 60%)`,
     background: theme.palette.primary.main,
     color: theme.palette.text.primary
+  },
+  userProfile: {
+    width: drawerWidth
   }
 }))
 
@@ -92,26 +102,21 @@ const DashboardLayout = props => {
   const location = useLocation()
   const classes = useStyles()
   const theme = useTheme()
+  const history = useHistory()
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  console.log('location:', location)
 
+  const logout = () => {
+    // clear user data from store
+    // remove token from local storage
+    history.push('/')
+  }
   const handleDrawerToggle = () => {
+    console.log('handle drawer called')
     setMobileOpen(!mobileOpen)
   }
 
   const drawer = (
-    <div>
-      <Box className={classes.toolbar}>
-        <IconButton
-          color='primary'
-          className={classes.button}
-          aria-label='close drawer'
-          onClick={handleDrawerToggle}
-        >
-          <ArrowBackIosRoundedIcon />
-        </IconButton>
-      </Box>
-      <Divider />
+    <>
       <List>
         <ListItem
           to='/dashboard'
@@ -173,7 +178,21 @@ const DashboardLayout = props => {
           <ListItemText primary='My Habits' />
         </ListItem>
       </List>
-    </div>
+      <Box className={classes.userProfile} pb={2}>
+        <Divider />
+        <Box display='flex' align='center' justifyContent='center' p={2}>
+          <Fab
+            variant='extended'
+            size='small'
+            color='primary'
+            aria-label='logout '
+            onClick={() => logout()}
+          >
+            Log Out
+          </Fab>
+        </Box>
+      </Box>
+    </>
   )
 
   return (
@@ -183,12 +202,13 @@ const DashboardLayout = props => {
         <Toolbar>
           <IconButton
             color='primary'
-            aria-label='open drawer'
+            aria-label='toggle drawer'
             edge='start'
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-            <MenuRoundedIcon />
+            {!mobileOpen && <MenuRoundedIcon />}
+            {mobileOpen && <ArrowBackIosRoundedIcon />}
           </IconButton>
           <Typography variant='h6' align='center' color='primary'>
             LifeGPA
@@ -208,9 +228,10 @@ const DashboardLayout = props => {
             onClose={handleDrawerToggle}
             classes={{
               paper: classes.drawerPaper
+              // modal: classes.modal
             }}
             ModalProps={{
-              keepMounted: true // Better open performance on mobile.
+              keepMounted: true
             }}
           >
             {drawer}
@@ -246,3 +267,9 @@ const DashboardLayout = props => {
 }
 
 export default DashboardLayout
+/*
+          <AccountCircleTwoToneIcon />
+          <Typography variant='body1' component='p'>
+            &emsp;Bob
+          </Typography>
+*/
