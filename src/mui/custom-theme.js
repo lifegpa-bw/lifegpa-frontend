@@ -7,7 +7,7 @@ export default createMuiTheme({
     },
     secondary: {
       main: '#6807F9'
-    },
+    }
   },
   typography: {
     // set base font-size on html element to 10px

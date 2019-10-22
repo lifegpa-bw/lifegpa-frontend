@@ -1,21 +1,25 @@
-import { deleteItem, deleteTypes } from '../actions'
+import { deleteTypes, getUDTypes } from '../actions'
+
+const storageUserName = localStorage.getItem('lgap-username') || ''
 
 const initialState = {
-  username: '',
-  error: '',
-  isFetching: false
+  isFetching: false,
+  user: {
+    username: storageUserName
+  }
 }
 
 function userReducer(state = initialState, action) {
   console.log('reducer', action)
+
   switch (action.type) {
-    /*
-    case ASYNC_ACTION_START:
+    case getUDTypes.SUCCESS:
       return {
-        ...state,
-        isFetching: true
+        isFetching: false,
+        user: action.payload
       }
 
+    /*
     case ASYNC_ACTION_SUCCESS:
       return {
         ...state,

@@ -1,19 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import {AppBar, Toolbar, Typography} from '@material-ui/core';
 
 
-const NavBar = () => {
-  return (
-    <Mainnav>
-        <h2>LifeGPA</h2>
-    </Mainnav>
-  )
-}
+export default props => 
 
-export default NavBar;
+<AppBar position="static">
+    <Toolbar>
+    <Typography variant="headline" color="inherit">
+            <h2>LifeGPA</h2>
+    </Typography>
+    </Toolbar>
+</AppBar>
 
-const Mainnav = styled.div`
-Background-color: black;
-color: #FFFF00;
-padding: 1%;
-`
+
+
