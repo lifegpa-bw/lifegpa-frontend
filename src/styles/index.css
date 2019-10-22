@@ -36,3 +36,8 @@ html {
   font-size: 15px;
   line-height: 19px;
 }
+
+.currDate {
+  font-weight: normal;
+  background: #FAFAFA;
+}
