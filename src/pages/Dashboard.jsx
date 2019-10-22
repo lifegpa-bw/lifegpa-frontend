@@ -1,7 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { DashboardLayout } from '../components'
+import { getUData } from '../actions'
+import { calcAvgGpa } from '../utils'
 
 const Dashboard = props => {
+  const { user } = useSelector(store => store.User)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUData())
+  }, [dispatch])
+
+  console.log('user data in dashboard:', user)
+
+  if (user.history) {
+    console.log('score for one day:', calcAvgGpa(user.history, 1))
+    console.log('score for three days:', calcAvgGpa(user.history, 3))
+  }
+
   return (
     <DashboardLayout>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
