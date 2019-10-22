@@ -14,3 +14,25 @@ html {
   width: 360px;
   height: 100vh;
 }
+
+.daily-report {
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.report {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reportTitle {
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 19px;
+}
