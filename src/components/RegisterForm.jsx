@@ -19,21 +19,21 @@ const Register = ({ errors, touched, status }) => {
   return (
     <Main>
       <Form2>
-        <Title>REGISTER</Title>
+        <Title>Register</Title>
         <Text>
           <Input type='text' name='username' placeholder='Create a Username' />
-          {touched.username && errors.username && <p>{errors.username}</p>}
+          {touched.username && errors.username && <Errors>{errors.username}</Errors>}
           <Input
             type='password'
             name='password'
             placeholder='Create a Password'
           />
-          {touched.password && errors.password && <p>{errors.password}</p>}
+          {touched.password && errors.password && <Errors>{errors.password}</Errors>}
           <Input type='email' name='email' placeholder='Enter Your Email' />
-          {touched.email && errors.email && <p>{errors.email}</p>}
+          {touched.email && errors.email && <Errors>{errors.email}</Errors>}
         </Text>
         <Buttonc>
-          <Button className='buttonclass'>SIGN UP</Button>
+          <Button className='buttonclass'>Register</Button>
         </Buttonc>
       </Form2>
       <Link1 to='/login'>
@@ -78,7 +78,7 @@ export default FormikSignup
 //styles
 
 const Main = styled.div`
-  height: 87vh;
+  height: 92vh;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -88,7 +88,7 @@ const Main = styled.div`
 `
 const Form2 = styled(Form)`
   border: 1px solid black;
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 20px;
 `
 const Title = styled.label`
@@ -111,19 +111,25 @@ const Buttonc = styled.div`
   justify-content: center;
   &:hover .buttonclass {
     background-color: black;
-    color: #ffff00;
+    color: #FFEB38;
   }
 `
 const Button = styled.button`
-  background-color: #ffff00;
-  color: black;
-  width: 100%;
-  text-align: center;
-  padding: 5%;
+background-color: #FFEB38;
+color: black;
+width: 100%;
+text-align: center;
+padding: 5%;
+border-radius: 3px;
+font-size: 1.5rem;
 `
 const Newlink = styled.p`
   font-size: 10px;
 `
 const Link1 = styled(Link)`
   color: black;
+`
+
+const Errors = styled.p`
+font-size: 1rem;
 `
