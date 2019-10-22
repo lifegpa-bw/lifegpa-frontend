@@ -1,12 +1,12 @@
 import React from 'react'
 import { DashboardLayout } from '../components'
 
-const DailyReport = () => {
+const Habits = () => {
   return (
     <DashboardLayout>
-      <p>Daily Report page</p>
+      <p>My Habits page</p>
     </DashboardLayout>
   )
 }
 
-export default DailyReport
+export default Habits
