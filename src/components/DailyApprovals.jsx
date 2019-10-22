@@ -43,6 +43,7 @@ export default function DailyApprovals() {
   return (
     <div class="wrapper">
       <p className="daily-report">Daily Report</p>
+      <p className="daily-report currDate">{getCurrentDate()}</p>
       <hr />
     </div>
   )
