@@ -1,3 +1,4 @@
 import { axiosWithAuth } from './axiosWithAuth'
+import { calcAvgGpa } from './calcAvgGpa'
 
-export { axiosWithAuth }
+export { axiosWithAuth, calcAvgGpa }
