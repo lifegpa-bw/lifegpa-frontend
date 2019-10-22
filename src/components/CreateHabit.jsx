@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Habit from '../components/HabitCard'
 
 const Habits = ({errors, touched, status }) => {
   const [habits, setHabits] = useState([]);
@@ -16,36 +17,40 @@ const Habits = ({errors, touched, status }) => {
 
   return (
     
-      
-        <Form>
-          <h1>Creating habit</h1>
-          { /*Description Field */}
-          {touched.description && errors.description && <p>{errors.description}</p>}
-            <Field
-              type="text"
-              name="description"
-              placeholder="Create Habit"
-            />
-             { /*Good/Bad Field */}
-             {touched.type && errors.type && <p>{errors.type}</p>}
-            <Field name="type" component="select" placeholder="Type">
-              <option value="Good">Good</option>
-              <option value="Bad">Bad</option>
-            </Field>
-  
-            { /*Category Selector Field */}
-            {touched.category && errors.category && <p>{errors.category}</p>}
-            <Field name="category" component="select" placeholder="Cateogry">
-              <option color="blue" value="category1">Cateogry 1</option>
-              <option value="category2">Cateogry 2</option>
-              <option value="category3">Cateogry 3</option>
-              <option value="category4">Cateogry 4</option>
-              <option value="category5">Cateogry 5</option>
-            </Field>
-           
-             <button>Add</button>
-  
-        </Form>
+      <Container>
+        
+         <Title>Creating habit</Title>
+          <HabitForm>
+            { /*Description Field */}
+            {touched.description && errors.description && <p>{errors.description}</p>}
+              <Description
+                type="text"
+                name="description"
+                placeholder="Create Habit"
+              />
+               { /*Good/Bad Field */}
+               {touched.type && errors.type && <p>{errors.type}</p>}
+              <Type name="type" component="select" placeholder="Type">
+                <option>Type</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </Type>
+    
+              { /*Category Selector Field */}
+              {touched.category && errors.category && <p>{errors.category}</p>}
+              {/* <Field name="category" component="select" placeholder="Cateogry">
+                <option color="blue" value="category1">Cateogry 1</option>
+                <option value="category2">Cateogry 2</option>
+                <option value="category3">Cateogry 3</option>
+                <option value="category4">Cateogry 4</option>
+                <option value="category5">Cateogry 5</option>
+              </Field> */}
+             
+               <button>Add</button>
+              
+          </HabitForm>
+          <Habit />
+      </Container>
       
     
   )
@@ -76,9 +81,30 @@ export default withFormik({
     }
 })(Habits);
 
-// const HabitForm = styled(Form) `
-//   display:flex;
-//   justify-content:center;
-//   flex-direction:column;
-//   background:black;
-// `
+const Container = styled.div`
+  display:flex;
+  flex-direction:column;
+  width:50%:
+`
+const HabitForm = styled(Form) `
+  display:flex;
+  justify-content:space-between;
+  width:50%;
+  margin:auto;
+  // background:black;
+`
+const Title = styled.h1`
+  color:blue;
+  text-align:center;
+`
+const Description = styled(Field)`
+  padding:5px;
+  border:1px solid black;
+  border-radius:5px;
+`
+const Type = styled(Field)`
+  padding:5px;
+  border-radius:5px;
+
+`
+

@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { PrivateRoute } from './components'
 import { Launch, Login, Register, Dashboard } from './pages'
-import Habit from './pages/Habit'
+import Habit from './pages/Habit';
 
 function App() {
   return (
