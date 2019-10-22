@@ -16,7 +16,7 @@ const Login = ({ errors, touched, status }) => {
   return (
     <Main>
       <Form2>
-        <Title>LOGIN</Title>
+        <Title>Login</Title>
         <Text>
           <Input
             type='text'
@@ -32,7 +32,7 @@ const Login = ({ errors, touched, status }) => {
           {touched.password && errors.password && <p>{errors.password}</p>}
         </Text>
         <Buttonc>
-          <Button className='buttonclass'>LOG IN</Button>
+          <Button className='buttonclass'>Login</Button>
         </Buttonc>
       </Form2>
       <Link1 to='/register'>
@@ -71,7 +71,7 @@ export default FormikLogin
 //styling
 
 const Main = styled.div`
-  height: 87vh;
+  height: 92vh;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -104,16 +104,18 @@ const Buttonc = styled.div`
   justify-content: center;
   &:hover .buttonclass {
     background-color: black;
-    color: #ffff00;
+    color: #FFEB38;
   }
 `
 
 const Button = styled.button`
-  background-color: #ffff00;
+  background-color: #FFEB38;
   color: black;
   width: 100%;
   text-align: center;
   padding: 5%;
+  border-radius: 3px;
+  font-size: 1.5rem;
 `
 
 const Newlink = styled.p`
