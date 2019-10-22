@@ -1,28 +1,37 @@
 import React from 'react'
-import { AppBar } from '@material-ui/core'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import Container from '@material-ui/core/Container'
-import Fab from '@material-ui/core/Fab'
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
-import ScrollTop from './ScrollTop'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import AccountCircle from '@material-ui/icons/AccountCircle'
+import { NavLink, useLocation } from 'react-router-dom'
+
+// Mui
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Fab,
+  IconButton,
+  MenuItem,
+  Menu,
+  Divider,
+  Drawer,
+  Hidden,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Box
+} from '@material-ui/core'
+import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
+import TimelineIcon from '@material-ui/icons/Timeline'
+import DonutLargeRoundedIcon from '@material-ui/icons/DonutLargeRounded'
+import KeyboardArrowUpRoundedIcon from '@material-ui/icons/KeyboardArrowUpRounded'
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded'
-import MenuItem from '@material-ui/core/MenuItem'
-import Menu from '@material-ui/core/Menu'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import Hidden from '@material-ui/core/Hidden'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
+import AccountCircleTwoToneIcon from '@material-ui/icons/AccountCircleTwoTone'
+import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone'
+import BallotTwoToneIcon from '@material-ui/icons/BallotTwoTone'
+import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { ArrowLeftRounded } from '@material-ui/icons'
+
+// Custom Components
+import ScrollTop from './ScrollTop'
 
 const drawerWidth = 240
 
@@ -53,21 +62,38 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[4]
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    borderRight: 0,
+    backgroundColor: theme.palette.grey[500]
   },
   content: {
     // add margin to content  md up
     [theme.breakpoints.up('md')]: {
       marginLeft: drawerWidth
     }
+  },
+  navLink: {
+    // background: `linear-gradient(45deg, orange 30%, ${theme.palette.primary.main} 60%, orange)`,
+    color: theme.palette.text.primary,
+    transition: 'background 0.3s',
+    '&:hover': {
+      background: theme.palette.primary.main
+    }
+  },
+  'navLink-active': {
+    // background: `linear-gradient(0deg,  orange 15%,  ${theme.palette.primary.light} 60%)`,
+    background: theme.palette.primary.main,
+    color: theme.palette.text.primary
   }
 }))
 
 const DashboardLayout = props => {
   const { container } = props
+  const location = useLocation()
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  console.log('location:', location)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -87,16 +113,65 @@ const DashboardLayout = props => {
       </Box>
       <Divider />
       <List>
-        {['dashboard', 'daily report', 'my habits', 'history'].map(
-          (text, index) => (
-            <ListItem button key={index}>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          )
-        )}
+        <ListItem
+          to='/dashboard'
+          component={NavLink}
+          className={
+            location.pathname === '/dashboard'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <DonutLargeRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Dashboard' />
+        </ListItem>
+
+        <ListItem
+          to='/report'
+          component={NavLink}
+          className={
+            location.pathname === '/report'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <BallotTwoToneIcon />
+          </ListItemIcon>
+          <ListItemText primary='Daily Report' />
+        </ListItem>
+
+        <ListItem
+          to='/history'
+          component={NavLink}
+          className={
+            location.pathname === '/history'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <TimelineIcon />
+          </ListItemIcon>
+          <ListItemText primary='History' />
+        </ListItem>
+
+        <ListItem
+          to='/habits'
+          component={NavLink}
+          className={
+            location.pathname === '/habits'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <ListAltTwoToneIcon />
+          </ListItemIcon>
+          <ListItemText primary='My Habits' />
+        </ListItem>
       </List>
     </div>
   )
@@ -113,7 +188,7 @@ const DashboardLayout = props => {
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-            <MenuIcon />
+            <MenuRoundedIcon />
           </IconButton>
           <Typography variant='h6' align='center' color='primary'>
             LifeGPA
@@ -163,7 +238,7 @@ const DashboardLayout = props => {
       {/* Scroll to top icon */}
       <ScrollTop {...props}>
         <Fab color='primary' size='small' aria-label='scroll back to top'>
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowUpRoundedIcon />
         </Fab>
       </ScrollTop>
     </Box>

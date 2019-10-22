@@ -18,7 +18,6 @@ const Dashboard = props => {
     console.log('score for one day:', calcAvgGpa(user.history, 1))
     console.log('score for three days:', calcAvgGpa(user.history, 3))
   }
-
   return (
     <DashboardLayout>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
