@@ -121,6 +121,7 @@ const reports = [
 
 export default function DailyApprovals() {
 
+  const [state, setState] = useState({ data: reports });
 
 
   return (
