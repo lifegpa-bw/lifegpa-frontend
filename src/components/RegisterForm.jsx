@@ -82,7 +82,7 @@ export default FormikSignup
 //styles
 
 const Main = styled.div`
-height: 88vh;
+height: 87vh;
 background-color: #fff;
 display: flex;
 align-items: center;

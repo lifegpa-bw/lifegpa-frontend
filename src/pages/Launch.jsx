@@ -29,12 +29,12 @@ export default Launch;
 
 const Main = styled.div`
 display: flex;
-border: 1px solid black;
-height: 88vh;
+height: 87vh;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #fff;
+
 
 `
 

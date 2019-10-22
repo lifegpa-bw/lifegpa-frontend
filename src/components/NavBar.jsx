@@ -15,6 +15,5 @@ export default NavBar;
 const Mainnav = styled.div`
 Background-color: black;
 color: #FFFF00;
-border: 1px solid black;
 padding: 1%;
 `
