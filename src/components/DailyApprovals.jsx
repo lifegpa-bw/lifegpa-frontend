@@ -139,7 +139,22 @@ export default function DailyApprovals() {
     }));
   }
 
-  
+  function onNoHandle(id) {
+    setState(state => ({
+      data: state.data.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            className: "done2",
+            done: !item.done
+          };
+        } else {
+          return item;
+        }
+      })
+    }));
+  }
+
   return (
     <div class="wrapper">
       <p className="daily-report">Daily Report</p>
