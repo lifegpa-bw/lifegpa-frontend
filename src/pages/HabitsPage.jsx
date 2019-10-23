@@ -8,6 +8,6 @@ const Habits = () => {
       <CreateHabit />
     </DashboardLayout>
   )
-}
+};
 
 export default Habits

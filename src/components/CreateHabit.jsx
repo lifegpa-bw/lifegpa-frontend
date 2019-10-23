@@ -16,40 +16,51 @@ const Habits = ({ errors, touched, status }) => {
   }, [status])
 
   return (
-    <Container>
-      <Title>Creating habit</Title>
-      <HabitForm>
-        {/*Description Field */}
-        {touched.description && errors.description && (
-          <p>{errors.description}</p>
-        )}
-        <Description
-          type='text'
-          name='description'
-          placeholder='Create Habit'
-        />
-        {/*Good/Bad Field */}
-        {touched.type && errors.type && <p>{errors.type}</p>}
-        <Type name='type' component='select' placeholder='Type'>
-          <option>Type</option>
-          <option value='Good'>Good</option>
-          <option value='Bad'>Bad</option>
-        </Type>
-
-        {/*Category Selector Field */}
-        {touched.category && errors.category && <p>{errors.category}</p>}
-        {/* <Field name="category" component="select" placeholder="Cateogry">
+    
+      <Container>
+        
+         <Title>Create habit</Title>
+          <HabitForm>
+            { /*Description Field */}
+            {touched.description && errors.description && <p>{errors.description}</p>}
+              <Description
+                type="text"
+                name="description"
+                placeholder="Create Habit"
+              />
+               { /*Good/Bad Field */}
+               {touched.type && errors.type && <p>{errors.type}</p>}
+              <Type name="type" component="select" placeholder="Type">
+                <option>Type</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </Type>
+    
+              { /*Category Selector Field */}
+              {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
+              {/* <Field name="category" component="select" placeholder="Cateogry">
                 <option color="blue" value="category1">Cateogry 1</option>
                 <option value="category2">Cateogry 2</option>
                 <option value="category3">Cateogry 3</option>
                 <option value="category4">Cateogry 4</option>
                 <option value="category5">Cateogry 5</option>
               </Field> */}
+             
+               <Button type='submit'>Add</Button>
+              
+          </HabitForm>
+          {habits.map(event => (
 
-        <button>Add</button>
-      </HabitForm>
-      <Habit />
-    </Container>
+          <Habit 
+            key = {event.id}
+            description={event.description}
+            type={event.type}
+
+          />
+          ))}
+      </Container>
+      
+    
   )
 }
 export default withFormik({
@@ -57,13 +68,13 @@ export default withFormik({
     return {
       description: values.description || '',
       type: values.type || '',
-      category: values.category || ''
+      // category: values.category || ''
     }
   },
   validationSchema: yup.object().shape({
     description: yup.string().required('Please describe a habit'),
     type: yup.string().required('Please pick a type'),
-    category: yup.string().required('Please pick a category')
+    // category: yup.string().required('Please pick a category')
   }),
   handleSubmit: (values, { setStatus }) => {
     axios
@@ -81,7 +92,6 @@ export default withFormik({
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
 `
 const HabitForm = styled(Form)`
   display: flex;
@@ -103,3 +113,10 @@ const Type = styled(Field)`
   padding: 5px;
   border-radius: 5px;
 `
+
+const Button = styled.button`
+  border-radius:5px;
+  background:pink;
+  width:20%;
+`
+
