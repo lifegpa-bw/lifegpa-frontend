@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import uuid from 'react-uuid'
+import { setDR } from '../actions'
 
 function getCurrentDate() {
   const nth = function(d) {
@@ -122,6 +124,10 @@ const reports = [
 
 export default function DailyApprovals() {
   const [state, setState] = useState({ data: reports })
+  const dispatch = useDispatch()
+  const { dailyReport } = useSelector(store => store.User)
+
+  console.log('daily report in store from DailyApprovals:', dailyReport)
 
   function onYesHandle(id) {
     setState(state => ({

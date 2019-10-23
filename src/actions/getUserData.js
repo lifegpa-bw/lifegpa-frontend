@@ -2,9 +2,9 @@ import { axiosWithAuth } from '../utils'
 import { testData } from '../testData'
 
 export const getUDTypes = {
-  START: 'START',
-  SUCCESS: 'SUCCESS',
-  FAIL: 'FAIL'
+  START: 'GET_UD_START',
+  SUCCESS: 'GET_UD_SUCCESS',
+  FAIL: 'GET_UD_FAIL'
 }
 
 export const getUData = () => dispatch => {
