@@ -5,19 +5,17 @@ import styled from 'styled-components'
 import { deleteItem } from '../actions/axios_delete_action'
 
 const Habit = (props) => {
-  const [remove, setRemove] = useState();
-  
-  // const removeHabit = e=> {
-  //   const id = e.target.getAttribute('id')
-  //     setRemove(remove.filter(item => item.id !== id));
-  // }
-  
+  const [remove, setRemove] = useState([])
+
+  const removeHabit = id => {
+    setRemove(remove.filter(item => item.id !== id));
+  }
+  console.log("remove", remove);
   return (
     <Card>
-
         <p> {props.description} </p>
         <p> {props.type} </p>
-        <Button>
+        <Button onClick={removeHabit}>
           Delete
         </Button>
 

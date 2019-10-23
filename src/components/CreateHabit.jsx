@@ -9,11 +9,11 @@ import Habit from '../components/HabitCard'
 const Habits = ({ errors, touched, status }) => {
   const [habits, setHabits] = useState([])
 
-  useEffect(() => {
-    if (status) {
-      setHabits([...habits, status])
-    }
-  }, [status])
+useEffect(() => {
+  if (status) {
+    setHabits([...habits, status])
+  }
+}, [status])
 
   return (
     
@@ -22,14 +22,14 @@ const Habits = ({ errors, touched, status }) => {
          <Title>Create habit</Title>
           <HabitForm>
             { /*Description Field */}
-            {touched.description && errors.description && <p>{errors.description}</p>}
+            {touched.description && errors.description && <Error>{errors.description}</Error>}
               <Description
                 type="text"
                 name="description"
                 placeholder="Create Habit"
               />
                { /*Good/Bad Field */}
-               {touched.type && errors.type && <p>{errors.type}</p>}
+               {touched.type && errors.type && <Error>{errors.type}</Error>}
               <Type name="type" component="select" placeholder="Type">
                 <option>Type</option>
                 <option value="Good">Good</option>
@@ -55,7 +55,6 @@ const Habits = ({ errors, touched, status }) => {
             key = {event.id}
             description={event.description}
             type={event.type}
-
           />
           ))}
       </Container>
@@ -72,8 +71,8 @@ export default withFormik({
     }
   },
   validationSchema: yup.object().shape({
-    description: yup.string().required('Please describe a habit'),
-    type: yup.string().required('Please pick a type'),
+    description: yup.string().required('Field required'),
+    type: yup.string().required('Field required'),
     // category: yup.string().required('Please pick a category')
   }),
   handleSubmit: (values, { setStatus }) => {
@@ -118,5 +117,10 @@ const Button = styled.button`
   border-radius:5px;
   background:pink;
   width:20%;
+`
+const Error = styled.p`
+  padding:2px;
+  color:red;
+  font-size:1.2rem;
 `
 
