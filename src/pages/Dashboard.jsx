@@ -4,6 +4,10 @@ import { DashboardLayout } from '../components'
 import { getUData } from '../actions'
 import { calcAvgGpa } from '../utils'
 
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+
 const Dashboard = props => {
   const { user } = useSelector(store => store.User)
   const dispatch = useDispatch()
