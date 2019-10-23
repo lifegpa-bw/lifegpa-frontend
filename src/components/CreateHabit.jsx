@@ -92,7 +92,6 @@ export default withFormik({
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
 `
 const HabitForm = styled(Form)`
   display: flex;

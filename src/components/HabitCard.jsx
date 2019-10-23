@@ -27,17 +27,15 @@ const Habit = (props) => {
 export default Habit;
 
 const Card = styled.div`
-// border: 1px solid black;
-border-radius:5px;
+border-radius:10px;
 background:#F5DEB3;
 display:flex;
 justify-content:space-around;
-width:50%;
 margin:10px auto;
 text-align:center;
+width:80%;
 `
 const Button = styled.button`
 border-radius:5px;
 background:pink;
-width:20%;
 `
