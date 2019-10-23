@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { withFormik, Form, Field } from 'formik'
+import { connect } from 'react-redux'
 import * as yup from 'yup'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -7,8 +8,9 @@ import { Link } from 'react-router-dom'
 import Habit from '../components/HabitCard'
 import { addHabit } from '../actions'
 
-const Habits = ({ errors, touched, status }) => {
-  const [habits, setHabits] = useState([])
+const Habits = ({ errors, touched, status, ...props }) => {
+  const [habits, setHabits] = useState(props.dailyReport.habits)
+  console.log('store values in Habit ', props.dailyReport)
 
   useEffect(() => {
     if (status) {
@@ -49,17 +51,17 @@ const Habits = ({ errors, touched, status }) => {
 
         <Button type='submit'>Add</Button>
       </HabitForm>
-      {habits.map(event => (
+      {habits.map(habit => (
         <Habit
-          key={event.id}
-          description={event.description}
-          type={event.type}
+          key={habit.id}
+          description={habit.description}
+          type={habit.type}
         />
       ))}
     </Container>
   )
 }
-export default withFormik({
+const LoginFormik = withFormik({
   mapPropsToValues: values => {
     return {
       description: values.description || '',
@@ -84,6 +86,17 @@ export default withFormik({
       })
   }
 })(Habits)
+
+const mapStateToProps = state => {
+  return {
+    dailyReport: state.User.dailyReport
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { addHabit }
+)(LoginFormik)
 
 const Container = styled.div`
   display: flex;

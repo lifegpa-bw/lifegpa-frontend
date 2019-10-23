@@ -9,6 +9,9 @@ export const addHabTypes = {
 
 export const addHabit = newHabit => dispatch => {
   // set store.isFetching : true
+  dispatch({ type: addHabTypes.SUCCESS, payload: newHabit })
+}
+/*
   dispatch({ type: addHabTypes.START })
   axiosWithAuth()
     .post(`http://localhost:3333/api`, newHabit)
@@ -21,4 +24,4 @@ export const addHabit = newHabit => dispatch => {
       // if the api call fails trigger the FAIL action
       dispatch({ type: addHabTypes.FAIL, payload: err.response })
     })
-}
+*/
