@@ -4,7 +4,7 @@ import { DashboardLayout } from '../components'
 import { getUData } from '../actions'
 import { calcAvgGpa } from '../utils'
 
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 
@@ -139,7 +139,15 @@ const Dashboard = props => {
         </DashboardLayout>
       </div>
       <div className="progress-bar">
-        <CircularProgressbar value={percentage} text={`${percentage}%`} />
+        <CircularProgressbar
+          value={percentage}
+          text={`LPGA ${percentage}`}
+          styles={buildStyles({
+            textColor: "black",
+            pathColor: "yellow",
+            trailColor: "grey"
+          })}
+        />
       </div>
       <div className="begin-button">
         <button>Begin Daily Report</button>
