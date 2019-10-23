@@ -36,7 +36,6 @@ const Login = props => {
             .then(res => {
               console.log('login response', res.data)
               localStorage.setItem('token', res.data.token)
-              // setStatus(res.data)
               history.push('/dashboard')
             })
             .catch(err => {
