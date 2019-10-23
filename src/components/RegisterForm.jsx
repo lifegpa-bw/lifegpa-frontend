@@ -18,23 +18,14 @@ const registerSchema = Yup.object().shape({
   email: Yup.string().required('You must enter a valid email address')
 })
 
-const Register = ({ errors, touched, status }) => {
-  const [newUser, setNewUser] = useState([])
+const Register = ({ errors, touched }) => {
   const history = useHistory()
-
-  console.log('formik status:', status)
 
   const initialValues = {
     username: '',
     password: '',
     email: ''
   }
-
-  useEffect(() => {
-    if (status) {
-      setNewUser([...newUser, status])
-    }
-  }, [status])
 
   return (
     <Main>
