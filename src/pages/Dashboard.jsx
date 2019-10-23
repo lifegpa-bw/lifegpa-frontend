@@ -1,23 +1,42 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { DashboardLayout } from '../components'
-import { getUData } from '../actions'
+import { getUData, setDR } from '../actions'
 import { calcAvgGpa } from '../utils'
 
 const Dashboard = props => {
-  const { user } = useSelector(store => store.User)
+  const { user, dailyReport } = useSelector(store => store.User)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getUData())
-  }, [dispatch])
+    if (user.history) {
+      // console.log('score for one day:', calcAvgGpa(user.history, 1))
+      // console.log('score for three days:', calcAvgGpa(user.history, 3))
 
-  console.log('user data in dashboard:', user)
+      const today = new Date()
+      console.log('user history slice', user.history.slice(-1)[0].habits)
 
-  if (user.history) {
-    console.log('score for one day:', calcAvgGpa(user.history, 1))
-    console.log('score for three days:', calcAvgGpa(user.history, 3))
-  }
+      let newReport = {}
+      newReport = {
+        ...newReport,
+        date: today,
+        habits: user.history.slice(-1)[0].habits
+      }
+      // check if data exits for the current date in user.history
+      // if yes, pass it to setDR
+      dispatch(setDR(newReport))
+
+      // if no, create a new dailyReport object and pass to setDR.
+      // get last day in history
+      // if history is empty create object with date and emtpy habits array
+      // newReport = { date: today, habits: [] }
+    }
+  }, [user, dispatch])
+
+  console.log('User data in store from dashboard:', user)
+  console.log(' dailyReport in store from dashboard:', dailyReport)
+
   return (
     <DashboardLayout>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
