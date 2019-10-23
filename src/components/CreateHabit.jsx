@@ -6,17 +6,17 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Habit from '../components/HabitCard'
-import { addHabit } from '../actions'
+import { addHabit, deleteHabit } from '../actions'
 
 const Habits = ({ errors, touched, status, ...props }) => {
-  const [habits, setHabits] = useState(props.dailyReport.habits)
-  console.log('store values in Habit ', props.dailyReport)
+  const habits = props.dailyReport.habits
+  // console.log('store values in Habit ', props.dailyReport)
 
-useEffect(() => {
-  if (status) {
-    setHabits([...habits, status])
-  }
-}, [status])
+// useEffect(() => {
+//   if (status) {
+//     setHabits([...habits, status])
+//   }
+// }, [status, props.dailyReport.habits])
 
   return (
       <Container>
@@ -51,12 +51,14 @@ useEffect(() => {
                <Button type='submit'>Add</Button>
               
           </HabitForm>
-          {habits.map(event => (
+          {habits.map(habit => (
 
           <Habit 
-            key = {event.id}
-            description={event.description}
-            type={event.type}
+            key = {habit.id}
+            description={habit.description}
+            type={habit.type}
+            deleteHabit={props.deleteHabit}
+            id = {habit.id}
           />
           ))}
       </Container>
@@ -76,16 +78,14 @@ const LoginFormik = withFormik({
     type: yup.string().required('Field required'),
     // category: yup.string().required('Please pick a category')
   }),
-  handleSubmit: (values, { setStatus }) => {
-    axios
-      .post('https://reqres.in/api/users', values)
-      .then(res => {
-        setStatus(res.data)
-        console.log(res.data)
-      })
-      .catch(err => {
-        console.log('Error:', err)
-      })
+  handleSubmit: (values, { props }) => {
+    console.log("form submited")
+    props.addHabit({
+      id: Date.now(),
+      description: values.description,
+      type: values.type,
+      performed: false
+    })
   }
 })(Habits)
 
@@ -97,7 +97,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addHabit }
+  { addHabit, deleteHabit }
 )(LoginFormik)
 
 const Container = styled.div`
