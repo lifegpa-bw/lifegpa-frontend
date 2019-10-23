@@ -1,12 +1,12 @@
 
-export const specifications = 
-  {
-    "exercise": 0,
-    "diet": 0,
-    "hygiene": 0,
-    "social": 0,
-    "drugs": 0
-  }
+export const specifications =
+{
+  "exercise": 0,
+  "diet": 0,
+  "hygiene": 0,
+  "social": 0,
+  "drugs": 0
+}
 
 
 // console.log(specifications.exercise =+ 1)
@@ -164,12 +164,19 @@ export const testData = {
 }
 
 function specificationHabitAdder(params) {
+
+  let trueCounterExercise = 0;
+  let trueCounterDiet = 0;
+  let trueCounterHygiene = 0;
+  let trueCounterSocial = 0;
+  let trueCounterDrugs = 0;
+
   return testData.history.map(ele => (
     console.log("eeee: ", ele.habits),
     ele.habits.map(ele2 => console.log("eeee2: ", ele2.description))
-        
-  
-    
+
+
+
   ))
 }
 specificationHabitAdder()
