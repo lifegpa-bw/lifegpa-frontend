@@ -31,8 +31,8 @@ if (process.env.NODE_ENV === 'development') {
     composeEnhancers(
       applyMiddleware(...middleware),
       // enable Redux Dev Tools extension in dev
-      // window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        // window.__REDUX_DEVTOOLS_EXTENSION__()
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
     )
   )
 }

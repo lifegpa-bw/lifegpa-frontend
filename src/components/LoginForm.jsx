@@ -1,72 +1,84 @@
 import React, { useState, useEffect } from 'react'
-import { withFormik, Form, Field } from 'formik'
+import { Formik, Form, Field } from 'formik'
+import { useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const Login = ({ errors, touched, status }) => {
-  const [users, setUsers] = useState([])
-  useEffect(() => {
-    if (status) {
-      setUsers([...users, status])
-    }
-  }, [status])
+const Login = props => {
+  const initialValues = {
+    username: '',
+    password: ''
+  }
+
+  const [credentials, setCredentials] = useState(initialValues)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const history = useHistory()
+
+  const validationSchema = Yup.object().shape({
+    username: Yup.string().required('Username must be entered'),
+    password: Yup.string().required('Password must be entered')
+  })
 
   return (
     <Main>
-      <Form2>
-        <Title>Login</Title>
-        <Text>
-          <Input
-            type='text'
-            name='username'
-            placeholder='Enter Your Username'
-          />
-          {touched.username && errors.username && <Errors>{errors.username}</Errors>}
-          <Input
-            type='password'
-            name='password'
-            placeholder='Enter Your Password'
-          />
-          {touched.password && errors.password && <Errors>{errors.password}</Errors>}
-        </Text>
-        <Buttonc>
-          <Button className='buttonclass'>Login</Button>
-        </Buttonc>
-      </Form2>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={() => {
+          axios
+            .post(`https://reqres.in/api/login`, {
+              email: 'eve.holt@reqres.in',
+              password: 'cityslicka'
+            })
+            .then(res => {
+              console.log('login response', res.data)
+              localStorage.setItem('token', res.data.token)
+              history.push('/dashboard')
+            })
+            .catch(err => {
+              console.log('error on login:', err.response)
+            })
+        }}
+        render={({ touched, errors, ...props }) => (
+          <Form2>
+            <Title>Login</Title>
+
+            <Text>
+              <Input
+                type='text'
+                name='username'
+                placeholder='Enter Your Username'
+              />
+              {touched.username && errors.username && (
+                <Errors>{errors.username}</Errors>
+              )}
+              <Input
+                type='password'
+                name='password'
+                placeholder='Enter Your Password'
+              />
+              {touched.password && errors.password && (
+                <Errors>{errors.password}</Errors>
+              )}
+            </Text>
+            <Buttonc>
+              <Button className='buttonclass'>Login</Button>
+            </Buttonc>
+          </Form2>
+        )}
+      />
+
       <Link1 to='/register'>
         <Newlink>Need to create an account? Click here.</Newlink>
       </Link1>
     </Main>
   )
 }
-const FormikLogin = withFormik({
-  mapPropsToValues({ username, password }) {
-    return {
-      username: username || '',
-      password: password || ''
-    }
-  },
-  validationSchema: Yup.object().shape({
-    username: Yup.string().required('Username must be entered'),
-    password: Yup.string().required('Password must be entered')
-  }),
 
-  handleSubmit(values, { props, setStatus }) {
-    axios
-      .post(`https://reqres.in/api/users`, values)
-      .then(event => {
-        localStorage.setItem('token', event.data.token)
-        localStorage.setItem('user', JSON.stringify(event.data.user))
-        setStatus(event.data)
-        props.history.push('/dashboard')
-      })
-      .catch(err => console.log(err.e))
-  }
-})(Login)
-console.log(FormikLogin)
-export default FormikLogin
+export default Login
 
 //styling
 
@@ -104,12 +116,12 @@ const Buttonc = styled.div`
   justify-content: center;
   &:hover .buttonclass {
     background-color: black;
-    color: #FFEB38;
+    color: #ffeb38;
   }
 `
 
 const Button = styled.button`
-  background-color: #FFEB38;
+  background-color: #ffeb38;
   color: black;
   width: 100%;
   text-align: center;
@@ -127,5 +139,5 @@ const Link1 = styled(Link)`
 `
 
 const Errors = styled.p`
-font-size: 1rem;
+  font-size: 1rem;
 `

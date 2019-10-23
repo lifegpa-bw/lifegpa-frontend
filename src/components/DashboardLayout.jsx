@@ -108,6 +108,7 @@ const DashboardLayout = props => {
   const logout = () => {
     // clear user data from store
     // remove token from local storage
+    localStorage.removeItem('token')
     history.push('/')
   }
   const handleDrawerToggle = () => {

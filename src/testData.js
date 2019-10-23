@@ -9,33 +9,38 @@ export const testData = {
   ],
   history: [
     {
-      date: 10172019,
+      date: new Date(2019, 9, 1),
       habits: [
         {
+          id: 1,
           description: 'stretch for 15 minutes',
           type: 'good',
           category: 1,
           performed: false
         },
         {
+          id: 2,
           description: 'ate  a fruit',
           type: 'good',
           category: 2,
           performed: false
         },
         {
+          id: 3,
           description: 'brush teeth',
           type: 'good',
           category: 3,
           performed: false
         },
         {
+          id: 4,
           description: 'socialize for 1 hour',
           type: 'good',
           category: 4,
           performed: true
         },
         {
+          id: 5,
           description: 'Smoke cigarettes',
           type: 'bad',
           category: 5,
@@ -44,33 +49,38 @@ export const testData = {
       ]
     },
     {
-      date: 10182019,
+      date: new Date(2019, 9, 2),
       habits: [
         {
+          id: 1,
           description: 'stretch for 15 minutes',
           type: 'good',
           category: 1,
           performed: true
         },
         {
+          id: 2,
           description: 'ate  a fruit',
           type: 'good',
           category: 2,
           performed: true
         },
         {
+          id: 3,
           description: 'brush teeth',
           type: 'good',
           category: 3,
           performed: false
         },
         {
+          id: 4,
           description: 'socialize for 1 hour',
           type: 'good',
           category: 4,
           performed: true
         },
         {
+          id: 5,
           description: 'Smoke cigarettes',
           type: 'bad',
           category: 5,
@@ -79,33 +89,38 @@ export const testData = {
       ]
     },
     {
-      date: 10192019,
+      date: new Date(2019, 9, 3),
       habits: [
         {
+          id: 1,
           description: 'stretch for 15 minutes',
           type: 'good',
           category: 1,
           performed: false
         },
         {
+          id: 2,
           description: 'ate  a fruit',
           type: 'good',
           category: 2,
           performed: false
         },
         {
+          id: 3,
           description: 'brush teeth',
           type: 'good',
           category: 3,
           performed: false
         },
         {
+          id: 4,
           description: 'socialize for 1 hour',
           type: 'good',
           category: 4,
           performed: true
         },
         {
+          id: 5,
           description: 'Smoke cigarettes',
           type: 'bad',
           category: 5,
@@ -114,33 +129,38 @@ export const testData = {
       ]
     },
     {
-      date: 10202019,
+      date: new Date(2019, 9, 4),
       habits: [
         {
+          id: 1,
           description: 'stretch for 15 minutes',
           type: 'good',
           category: 1,
           performed: false
         },
         {
+          id: 2,
           description: 'ate  a fruit',
           type: 'good',
           category: 2,
           performed: false
         },
         {
+          id: 3,
           description: 'brush teeth',
           type: 'good',
           category: 3,
           performed: false
         },
         {
+          id: 4,
           description: 'socialize for 1 hour',
           type: 'good',
           category: 4,
           performed: true
         },
         {
+          id: 5,
           description: 'Smoke cigarettes',
           type: 'bad',
           category: 5,
