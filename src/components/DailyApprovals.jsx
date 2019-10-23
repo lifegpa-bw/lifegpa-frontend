@@ -117,7 +117,14 @@ const reports = [
     title: 'Call mum',
     done: false,
     className: ''
+  },
+  {
+    id: uuid(),
+    title: 'Call daddy',
+    done: false,
+    className: ''
   }
+ 
 ]
 
 export default function DailyApprovals() {

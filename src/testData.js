@@ -1,5 +1,5 @@
 
-const specifications = 
+export const specifications = 
   {
     "exercise": 0,
     "diet": 0,
@@ -9,7 +9,7 @@ const specifications =
   }
 
 
-console.log(specifications.exercise =+ 1)
+// console.log(specifications.exercise =+ 1)
 export const testData = {
   username: '',
   categories: [
@@ -162,3 +162,14 @@ export const testData = {
     }
   ]
 }
+
+function specificationHabitAdder(params) {
+  return testData.history.map(ele => (
+    console.log("eeee: ", ele.habits),
+    ele.habits.map(ele2 => console.log("eeee2: ", ele2.description))
+        
+  
+    
+  ))
+}
+specificationHabitAdder()
