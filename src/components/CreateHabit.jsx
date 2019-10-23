@@ -6,59 +6,64 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Habit from '../components/HabitCard'
-import { addHabit } from '../actions'
+import { addHabit, deleteHabit } from '../actions'
 
 const Habits = ({ errors, touched, status, ...props }) => {
-  const [habits, setHabits] = useState(props.dailyReport.habits)
-  console.log('store values in Habit ', props.dailyReport)
+  const habits = props.dailyReport.habits
+  // console.log('store values in Habit ', props.dailyReport)
 
-  useEffect(() => {
-    if (status) {
-      setHabits([...habits, status])
-    }
-  }, [status])
+// useEffect(() => {
+//   if (status) {
+//     setHabits([...habits, status])
+//   }
+// }, [status, props.dailyReport.habits])
 
   return (
-    <Container>
-      <Title>Create habit</Title>
-      <HabitForm>
-        {/*Description Field */}
-        {touched.description && errors.description && (
-          <p>{errors.description}</p>
-        )}
-        <Description
-          type='text'
-          name='description'
-          placeholder='Create Habit'
-        />
-        {/*Good/Bad Field */}
-        {touched.type && errors.type && <p>{errors.type}</p>}
-        <Type name='type' component='select' placeholder='Type'>
-          <option>Type</option>
-          <option value='Good'>Good</option>
-          <option value='Bad'>Bad</option>
-        </Type>
-
-        {/*Category Selector Field */}
-        {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
-        {/* <Field name="category" component="select" placeholder="Cateogry">
+      <Container>
+        
+         <Title>Create habit</Title>
+          <HabitForm>
+            { /*Description Field */}
+            {touched.description && errors.description && <Error>{errors.description}</Error>}
+              <Description
+                type="text"
+                name="description"
+                placeholder="Create Habit"
+              />
+               { /*Good/Bad Field */}
+               {touched.type && errors.type && <Error>{errors.type}</Error>}
+              <Type name="type" component="select" placeholder="Type">
+                <option>Type</option>
+                <option value="Good">Good</option>
+                <option value="Bad">Bad</option>
+              </Type>
+    
+              { /*Category Selector Field */}
+              {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
+              {/* <Field name="category" component="select" placeholder="Cateogry">
                 <option color="blue" value="category1">Cateogry 1</option>
                 <option value="category2">Cateogry 2</option>
                 <option value="category3">Cateogry 3</option>
                 <option value="category4">Cateogry 4</option>
                 <option value="category5">Cateogry 5</option>
               </Field> */}
+             
+               <Button type='submit'>Add</Button>
+              
+          </HabitForm>
+          {habits.map(habit => (
 
-        <Button type='submit'>Add</Button>
-      </HabitForm>
-      {habits.map(habit => (
-        <Habit
-          key={habit.id}
-          description={habit.description}
-          type={habit.type}
-        />
-      ))}
-    </Container>
+          <Habit 
+            key = {habit.id}
+            description={habit.description}
+            type={habit.type}
+            deleteHabit={props.deleteHabit}
+            id = {habit.id}
+          />
+          ))}
+      </Container>
+      
+    
   )
 }
 const LoginFormik = withFormik({
@@ -66,24 +71,21 @@ const LoginFormik = withFormik({
     return {
       description: values.description || '',
       type: values.type || ''
-      // category: values.category || ''
     }
   },
   validationSchema: yup.object().shape({
-    description: yup.string().required('Please describe a habit'),
-    type: yup.string().required('Please pick a type')
+    description: yup.string().required('Field required'),
+    type: yup.string().required('Field required'),
     // category: yup.string().required('Please pick a category')
   }),
-  handleSubmit: (values, { setStatus }) => {
-    axios
-      .post('https://reqres.in/api/users', values)
-      .then(res => {
-        setStatus(res.data)
-        console.log(res.data)
-      })
-      .catch(err => {
-        console.log('Error:', err)
-      })
+  handleSubmit: (values, { props }) => {
+    console.log("form submited")
+    props.addHabit({
+      id: Date.now(),
+      description: values.description,
+      type: values.type,
+      performed: false
+    })
   }
 })(Habits)
 
@@ -95,7 +97,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addHabit }
+  { addHabit, deleteHabit }
 )(LoginFormik)
 
 const Container = styled.div`
@@ -128,3 +130,9 @@ const Button = styled.button`
   background: pink;
   width: 20%;
 `
+const Error = styled.p`
+  padding:2px;
+  color:red;
+  font-size:1.2rem;
+`
+

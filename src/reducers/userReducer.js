@@ -21,17 +21,17 @@ function userReducer(state = initialState, action) {
       }
 
     // add a habit to the daily report
-    case addHabTypes.SUCCESS:
-      const currentDay = state.user.history[0].habits
-      currentDay = [...currentDay, action.payload]
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          history: [currentDay, ...state.user.history]
-        },
-        isFetching: false
-      }
+    // case addHabTypes.SUCCESS:
+    //   const currentDay = state.user.history[0].habits
+    //   currentDay = [...currentDay, action.payload]
+    //   return {
+    //     ...state,
+    //     user: {
+    //       ...state.user,
+    //       history: [currentDay, ...state.user.history]
+    //     },
+    //     isFetching: false
+    //   }
 
     // store  user's daily report in separate object to simplify operations
     case drTypes.SET:
@@ -39,7 +39,25 @@ function userReducer(state = initialState, action) {
         ...state,
         dailyReport: action.payload
       }
+    case dhTypes.SUCCESS:
+        return {
+          ...state,
+          dailyReport: {
+            ...state.dailyReport,
+            habits: state.dailyReport.habits.filter(habit => habit.id !== action.payload)
+          }
+      }
 
+      case addHabTypes.SUCCESS:    
+      return {
+        ...state,
+        dailyReport: {
+          ...state.dailyReport,
+          habits: [...state.dailyReport.habits, action.payload]
+        }
+      }
+
+    
     /*
     case ASYNC_ACTION_FAIL:
       return {
