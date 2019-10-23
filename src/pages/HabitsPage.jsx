@@ -1,10 +1,12 @@
 import React from 'react'
 import { DashboardLayout } from '../components'
+import HabitForm from "../components/HabitForm"
+
 
 const Habits = () => {
   return (
     <DashboardLayout>
-      <p>My Habits page</p>
+      <HabitForm/>
     </DashboardLayout>
   )
 }
