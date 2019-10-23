@@ -1,3 +1,15 @@
+
+const specifications = 
+  {
+    "exercise": 0,
+    "diet": 0,
+    "hygiene": 0,
+    "social": 0,
+    "drugs": 0
+  }
+
+
+console.log(specifications.exercise =+ 1)
 export const testData = {
   username: '',
   categories: [

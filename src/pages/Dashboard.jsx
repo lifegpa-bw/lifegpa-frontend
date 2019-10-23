@@ -13,14 +13,16 @@ const Dashboard = props => {
   }, [dispatch])
 
   console.log('user data in dashboard:', user)
-
+  let percentage;
   if (user.history) {
     console.log('score for one day:', calcAvgGpa(user.history, 1))
     console.log('score for three days:', calcAvgGpa(user.history, 3))
+    return percentage = calcAvgGpa(user.history, 3);
   }
   return (
+    <>
     <DashboardLayout>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
+      {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
       architecto tenetur sapiente iusto, recusandae sint commodi minima odit
       eligendi dolores fugit distinctio voluptatum tempore adipisci eveniet!
       Animi ad libero totam, unde mollitia iusto neque vel et distinctio dolore?
@@ -128,8 +130,10 @@ const Dashboard = props => {
       accusantium nisi quia beatae dolores ad libero? Provident eaque quisquam
       fugiat aspernatur aliquid, odit architecto, repellendus adipisci
       praesentium aut suscipit pariatur reprehenderit eveniet magnam iste
-      perspiciatis voluptatem quis dignissimos eius.
+      perspiciatis voluptatem quis dignissimos eius. */}
     </DashboardLayout>
+    <CircularProgressbar value={percentage} text={`${percentage}%`} />
+  </>
   )
 }
 
