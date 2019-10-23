@@ -6,6 +6,7 @@
       import 'react-circular-progressbar/dist/styles.css';
       
       import "./styles.css";
+      import {specifications} from "../testData"
 
       function Specifications() {
         return (
