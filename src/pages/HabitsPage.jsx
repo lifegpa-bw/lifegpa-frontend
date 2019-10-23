@@ -1,6 +1,7 @@
+  
 import React from 'react'
 import { DashboardLayout } from '../components'
-import { CreateHabit } from '../components'
+import CreateHabit  from '../components/CreateHabit'
 
 const Habits = () => {
   return (
@@ -10,4 +11,4 @@ const Habits = () => {
   )
 };
 
-export default Habits
+export default Habits;
