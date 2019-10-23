@@ -1,10 +1,10 @@
 import React from 'react'
-import { DashboardLayout } from '../components'
+import { DashboardLayout, DailyApprovals } from '../components'
 
 const DailyReport = () => {
   return (
     <DashboardLayout>
-      <p>Daily Report page</p>
+      <DailyApprovals />
     </DashboardLayout>
   )
 }
