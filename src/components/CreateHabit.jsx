@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { withFormik, Form, Field } from 'formik';
-import * as yup from 'yup';
-import axios from 'axios';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { withFormik, Form, Field } from 'formik'
+import * as yup from 'yup'
+import axios from 'axios'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import Habit from '../components/HabitCard'
 
-const Habits = ({errors, touched, status }) => {
-  const [habits, setHabits] = useState([]);
+const Habits = ({ errors, touched, status }) => {
+  const [habits, setHabits] = useState([])
 
   useEffect(() => {
-    if(status) {
+    if (status) {
       setHabits([...habits, status])
     }
-  },[status])
+  }, [status])
 
   return (
     
@@ -62,13 +62,13 @@ const Habits = ({errors, touched, status }) => {
       
     
   )
-};
+}
 export default withFormik({
-  mapPropsToValues:(values) => {
+  mapPropsToValues: values => {
     return {
       description: values.description || '',
-      type: values.type || "",
-      // category: values.category || ""
+      type: values.type || '',
+      // category: values.category || ''
     }
   },
   validationSchema: yup.object().shape({
@@ -76,44 +76,43 @@ export default withFormik({
     type: yup.string().required('Please pick a type'),
     // category: yup.string().required('Please pick a category')
   }),
-    handleSubmit:(values, { setStatus }) => {
-      axios
-        .post("https://reqres.in/api/users", values)
-          .then(res => {
-            setStatus(res.data)
-            console.log(res.data)
-          })
-          .catch((err) => {
-            console.log('Error:', err)
-          })
-    }
-})(Habits);
+  handleSubmit: (values, { setStatus }) => {
+    axios
+      .post('https://reqres.in/api/users', values)
+      .then(res => {
+        setStatus(res.data)
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log('Error:', err)
+      })
+  }
+})(Habits)
 
 const Container = styled.div`
-  display:flex;
-  flex-direction:column;
-  width:50%:
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 `
-const HabitForm = styled(Form) `
-  display:flex;
-  justify-content:space-between;
-  width:50%;
-  margin:auto;
+const HabitForm = styled(Form)`
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: auto;
   // background:black;
 `
 const Title = styled.h1`
-  color:blue;
-  text-align:center;
+  color: blue;
+  text-align: center;
 `
 const Description = styled(Field)`
-  padding:5px;
-  border:1px solid black;
-  border-radius:5px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 `
 const Type = styled(Field)`
-  padding:5px;
-  border-radius:5px;
-
+  padding: 5px;
+  border-radius: 5px;
 `
 
 const Button = styled.button`

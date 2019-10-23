@@ -13,5 +13,11 @@ export default createMuiTheme({
     // set base font-size on html element to 10px
     htmlFontSize: 10
   },
-  overrides: {}
+  overrides: {
+    MuiBackdrop: {
+      root: {
+        backgroundColor: 'transparent'
+      }
+    }
+  }
 })

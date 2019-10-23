@@ -1,10 +1,11 @@
 import React from 'react'
+import { DashboardLayout, DailyApprovals } from '../components'
 
 const DailyReport = () => {
   return (
-    <div>
-      <p>Daily Report Page</p>
-    </div>
+    <DashboardLayout>
+      <DailyApprovals />
+    </DashboardLayout>
   )
 }
 

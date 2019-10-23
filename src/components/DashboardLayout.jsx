@@ -1,28 +1,38 @@
 import React from 'react'
-import { AppBar } from '@material-ui/core'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import Container from '@material-ui/core/Container'
-import Fab from '@material-ui/core/Fab'
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
-import ScrollTop from './ScrollTop'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import AccountCircle from '@material-ui/icons/AccountCircle'
+import { NavLink, useLocation, useHistory } from 'react-router-dom'
+
+// Mui
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Fab,
+  IconButton,
+  MenuItem,
+  Menu,
+  Divider,
+  Drawer,
+  Hidden,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Button,
+  Box
+} from '@material-ui/core'
+import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
+import TimelineIcon from '@material-ui/icons/Timeline'
+import DonutLargeRoundedIcon from '@material-ui/icons/DonutLargeRounded'
+import KeyboardArrowUpRoundedIcon from '@material-ui/icons/KeyboardArrowUpRounded'
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded'
-import MenuItem from '@material-ui/core/MenuItem'
-import Menu from '@material-ui/core/Menu'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import Hidden from '@material-ui/core/Hidden'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
+import AccountCircleTwoToneIcon from '@material-ui/icons/AccountCircleTwoTone'
+import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone'
+import BallotTwoToneIcon from '@material-ui/icons/BallotTwoTone'
+import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { ArrowLeftRounded } from '@material-ui/icons'
+
+// Custom Components
+import ScrollTop from './ScrollTop'
 
 const drawerWidth = 240
 
@@ -37,6 +47,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     // app bar is always above menu
     zIndex: theme.zIndex.drawer + 1,
+    minHeight: theme.mixins.toolbar.minHeight,
     backgroundColor: theme.palette.common.black
   },
   menuButton: {
@@ -48,57 +59,140 @@ const useStyles = makeStyles(theme => ({
   },
   // sets the height based on screen size
   toolbar: {
-    minHeight: theme.mixins.toolbar.minHeight,
-    backgroundColor: theme.palette.common.black,
-    boxShadow: theme.shadows[4]
+    marginTop: theme.mixins.toolbar.minHeight
   },
   drawerPaper: {
-    width: drawerWidth
+    marginTop: theme.mixins.toolbar.minHeight,
+    width: drawerWidth,
+    borderRight: 0,
+    backgroundColor: theme.palette.grey[500]
+  },
+  modal: {
+    top: theme.mixins.toolbar.minHeight
+  },
+  backdrop: {
+    top: theme.mixins.toolbar.minHeight
   },
   content: {
     // add margin to content  md up
     [theme.breakpoints.up('md')]: {
       marginLeft: drawerWidth
     }
+  },
+  navLink: {
+    // background: `linear-gradient(45deg, orange 30%, ${theme.palette.primary.main} 60%, orange)`,
+    color: theme.palette.text.primary,
+    transition: 'background 0.3s',
+    '&:hover': {
+      background: theme.palette.primary.main
+    }
+  },
+  'navLink-active': {
+    // background: `linear-gradient(0deg,  orange 15%,  ${theme.palette.primary.light} 60%)`,
+    background: theme.palette.primary.main,
+    color: theme.palette.text.primary
+  },
+  userProfile: {
+    width: drawerWidth
   }
 }))
 
 const DashboardLayout = props => {
   const { container } = props
+  const location = useLocation()
   const classes = useStyles()
   const theme = useTheme()
+  const history = useHistory()
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
+  const logout = () => {
+    // clear user data from store
+    // remove token from local storage
+    history.push('/')
+  }
   const handleDrawerToggle = () => {
+    console.log('handle drawer called')
     setMobileOpen(!mobileOpen)
   }
 
   const drawer = (
-    <div>
-      <Box className={classes.toolbar}>
-        <IconButton
-          color='primary'
-          className={classes.button}
-          aria-label='close drawer'
-          onClick={handleDrawerToggle}
-        >
-          <ArrowBackIosRoundedIcon />
-        </IconButton>
-      </Box>
-      <Divider />
+    <>
       <List>
-        {['dashboard', 'daily report', 'my habits', 'history'].map(
-          (text, index) => (
-            <ListItem button key={index}>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          )
-        )}
+        <ListItem
+          to='/dashboard'
+          component={NavLink}
+          className={
+            location.pathname === '/dashboard'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <DonutLargeRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Dashboard' />
+        </ListItem>
+
+        <ListItem
+          to='/report'
+          component={NavLink}
+          className={
+            location.pathname === '/report'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <BallotTwoToneIcon />
+          </ListItemIcon>
+          <ListItemText primary='Daily Report' />
+        </ListItem>
+
+        <ListItem
+          to='/history'
+          component={NavLink}
+          className={
+            location.pathname === '/history'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <TimelineIcon />
+          </ListItemIcon>
+          <ListItemText primary='History' />
+        </ListItem>
+
+        <ListItem
+          to='/habits'
+          component={NavLink}
+          className={
+            location.pathname === '/habits'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <ListAltTwoToneIcon />
+          </ListItemIcon>
+          <ListItemText primary='My Habits' />
+        </ListItem>
       </List>
-    </div>
+      <Box className={classes.userProfile} pb={2}>
+        <Divider />
+        <Box display='flex' align='center' justifyContent='center' p={2}>
+          <Fab
+            variant='extended'
+            size='small'
+            color='primary'
+            aria-label='logout '
+            onClick={() => logout()}
+          >
+            Log Out
+          </Fab>
+        </Box>
+      </Box>
+    </>
   )
 
   return (
@@ -108,12 +202,13 @@ const DashboardLayout = props => {
         <Toolbar>
           <IconButton
             color='primary'
-            aria-label='open drawer'
+            aria-label='toggle drawer'
             edge='start'
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-            <MenuIcon />
+            {!mobileOpen && <MenuRoundedIcon />}
+            {mobileOpen && <ArrowBackIosRoundedIcon />}
           </IconButton>
           <Typography variant='h6' align='center' color='primary'>
             LifeGPA
@@ -133,9 +228,10 @@ const DashboardLayout = props => {
             onClose={handleDrawerToggle}
             classes={{
               paper: classes.drawerPaper
+              // modal: classes.modal
             }}
             ModalProps={{
-              keepMounted: true // Better open performance on mobile.
+              keepMounted: true
             }}
           >
             {drawer}
@@ -163,7 +259,7 @@ const DashboardLayout = props => {
       {/* Scroll to top icon */}
       <ScrollTop {...props}>
         <Fab color='primary' size='small' aria-label='scroll back to top'>
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowUpRoundedIcon />
         </Fab>
       </ScrollTop>
     </Box>
@@ -171,3 +267,9 @@ const DashboardLayout = props => {
 }
 
 export default DashboardLayout
+/*
+          <AccountCircleTwoToneIcon />
+          <Typography variant='body1' component='p'>
+            &emsp;Bob
+          </Typography>
+*/
