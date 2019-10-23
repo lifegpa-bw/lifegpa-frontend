@@ -41,7 +41,7 @@ html {
   background: #fafafa;
 }
 
-button {
+.btn {
   background-color: white;
   color: #454545;
   border: none;
@@ -67,4 +67,47 @@ button {
 }
 .done2 {
   text-decoration: line-through #ffbebe;
+}
+
+.dash-board {
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  /* background-color: red */
+}
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: green; */
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+}
+
+.begin-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+  margin: 180px auto 40px auto;
+  width: 50%;
+  height: 50%;
+}
+
+.begin-button button {
+  background-color:  yellow;
+  color: #454545;
+  border: 2px solid #454545;
+  /* outline: 2px black; */
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5%;
+
 }

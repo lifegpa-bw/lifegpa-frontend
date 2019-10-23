@@ -171,10 +171,10 @@ export default function DailyApprovals() {
           <div className='reportTitle'>{report.title}</div>
 
           <div>
-            <button id='btn1' onClick={() => onYesHandle(report.id)}>
+            <button class='btn' id='btn1' onClick={() => onYesHandle(report.id)}>
               Yes
             </button>
-            <button id='btn2' onClick={() => onNoHandle(report.id)}>
+            <button class='btn' id='btn2' onClick={() => onNoHandle(report.id)}>
               No
             </button>
           </div>
