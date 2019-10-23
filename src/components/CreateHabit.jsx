@@ -19,8 +19,6 @@ useEffect(() => {
 }, [status])
 
   return (
-<<<<<<< HEAD
-    
       <Container>
         
          <Title>Create habit</Title>
@@ -43,38 +41,12 @@ useEffect(() => {
               { /*Category Selector Field */}
               {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
               {/* <Field name="category" component="select" placeholder="Cateogry">
-=======
-    <Container>
-      <Title>Create habit</Title>
-      <HabitForm>
-        {/*Description Field */}
-        {touched.description && errors.description && (
-          <p>{errors.description}</p>
-        )}
-        <Description
-          type='text'
-          name='description'
-          placeholder='Create Habit'
-        />
-        {/*Good/Bad Field */}
-        {touched.type && errors.type && <p>{errors.type}</p>}
-        <Type name='type' component='select' placeholder='Type'>
-          <option>Type</option>
-          <option value='Good'>Good</option>
-          <option value='Bad'>Bad</option>
-        </Type>
-
-        {/*Category Selector Field */}
-        {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
-        {/* <Field name="category" component="select" placeholder="Cateogry">
->>>>>>> ed3168f60af48469ce8d0b48122cf97e3343e248
                 <option color="blue" value="category1">Cateogry 1</option>
                 <option value="category2">Cateogry 2</option>
                 <option value="category3">Cateogry 3</option>
                 <option value="category4">Cateogry 4</option>
                 <option value="category5">Cateogry 5</option>
               </Field> */}
-<<<<<<< HEAD
              
                <Button type='submit'>Add</Button>
               
@@ -90,19 +62,6 @@ useEffect(() => {
       </Container>
       
     
-=======
-
-        <Button type='submit'>Add</Button>
-      </HabitForm>
-      {habits.map(habit => (
-        <Habit
-          key={habit.id}
-          description={habit.description}
-          type={habit.type}
-        />
-      ))}
-    </Container>
->>>>>>> ed3168f60af48469ce8d0b48122cf97e3343e248
   )
 }
 const LoginFormik = withFormik({
@@ -110,17 +69,11 @@ const LoginFormik = withFormik({
     return {
       description: values.description || '',
       type: values.type || ''
-      // category: values.category || ''
     }
   },
   validationSchema: yup.object().shape({
-<<<<<<< HEAD
     description: yup.string().required('Field required'),
     type: yup.string().required('Field required'),
-=======
-    description: yup.string().required('Please describe a habit'),
-    type: yup.string().required('Please pick a type')
->>>>>>> ed3168f60af48469ce8d0b48122cf97e3343e248
     // category: yup.string().required('Please pick a category')
   }),
   handleSubmit: (values, { setStatus }) => {
@@ -177,12 +130,9 @@ const Button = styled.button`
   background: pink;
   width: 20%;
 `
-<<<<<<< HEAD
 const Error = styled.p`
   padding:2px;
   color:red;
   font-size:1.2rem;
 `
 
-=======
->>>>>>> ed3168f60af48469ce8d0b48122cf97e3343e248
