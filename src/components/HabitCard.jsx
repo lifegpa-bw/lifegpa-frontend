@@ -1,18 +1,13 @@
 import React  from 'react';
-import styled from 'styled-components'
 
 
 
-const HabitCard = (props) => {
+
+const HabitCard = () => {
+
   return (
-    <Card>
-      <p>Habit Description - {props.description}</p>
-      <p>Habit Type - {props.type}</p>
-    </Card>
+    <h1>Test</h1>
   )
 }
 export default HabitCard;
 
-const Card = styled.div`
-border: 1px solid black;
-`
