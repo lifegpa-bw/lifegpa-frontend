@@ -172,7 +172,6 @@ function specificationHabitAdder(params) {
   let trueCounterDrugs = 0;
 
   return testData.history.map(ele => (
-     // console.log("eeee: ", ele.habits),
      ele.habits.map(ele2 => {
       if(ele2.description == "stretch for 15 minutes" && ele2.performed == true) {
         trueCounterExercise ++;
@@ -180,25 +179,21 @@ function specificationHabitAdder(params) {
       }
       if(ele2.description == "stretch for 15 minutes" && ele2.performed == true) {
         trueCounterDiet ++;
-        specifications.diet = trueCounterExercise;
+        specifications.diet = trueCounterDiet;
       }
       if(ele2.description == "stretch for 15 minutes" && ele2.performed == true) {
         trueCounterHygiene ++;
-        specifications.hygiene = trueCounterExercise;
+        specifications.hygiene = trueCounterHygiene;
       }
       if(ele2.description == "stretch for 15 minutes" && ele2.performed == true) {
         trueCounterSocial ++;
-        specifications.social = trueCounterExercise;
+        specifications.social = trueCounterSocial;
       }
       if(ele2.description == "stretch for 15 minutes" && ele2.performed == true) {
         trueCounterDrugs ++;
-        specifications.drugs = trueCounterExercise;
+        specifications.drugs = trueCounterDrugs;
       }
-    }
-      // console.log("eeee2: ", ele2.description)
-      
-
-    )
+    }  )
   ))
 }
 specificationHabitAdder()
