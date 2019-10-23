@@ -10,6 +10,9 @@ import { addHabit } from '../actions'
 const Habits = ({ errors, touched, status }) => {
   const [habits, setHabits] = useState([])
 
+  const removeHabit = id => {
+    setHabits(habits.filter(item => item.id !== id));
+ }
   useEffect(() => {
     if (status) {
       setHabits([...habits, status])
@@ -114,4 +117,5 @@ const Button = styled.button`
   border-radius: 5px;
   background: pink;
   width: 20%;
-`
+
+  `

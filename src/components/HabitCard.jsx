@@ -5,17 +5,12 @@ import styled from 'styled-components'
 import { deleteHabit } from '../actions'
 
 const Habit = props => {
-  const [remove, setRemove] = useState()
-
-  // const removeHabit = e=> {
-  //   const id = e.target.getAttribute('id')
-  //     setRemove(remove.filter(item => item.id !== id));
-  // }
-
+  console.log("passed down props",props);
   return (
     <Card>
       <p> {props.description} </p>
       <p> {props.type} </p>
+      <Button>Edit</Button>
       <Button>Delete</Button>
     </Card>
   )
