@@ -9,8 +9,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
       {...rest}
       render={props =>
         // If user is authenticated render 'component' prop
-        // localStorage.getItem('token') ? (
-        true ? (
+        localStorage.getItem('token') ? (
           <Component {...props} />
         ) : (
           // else redirect to launch screen

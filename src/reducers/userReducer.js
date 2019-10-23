@@ -1,12 +1,10 @@
-import { deleteTypes, getUDTypes } from '../actions'
+import { dhTypes, getUDTypes, addHabTypes } from '../actions'
 
-const storageUserName = localStorage.getItem('lgap-username') || ''
+// const storageUserName = localStorage.getItem('lgap-username') || ''
 
 const initialState = {
   isFetching: false,
-  user: {
-    username: storageUserName
-  }
+  user: {}
 }
 
 function userReducer(state = initialState, action) {
@@ -19,14 +17,19 @@ function userReducer(state = initialState, action) {
         user: action.payload
       }
 
-    /*
-    case ASYNC_ACTION_SUCCESS:
+    case addHabTypes.SUCCESS:
+      const currentDay = state.user.history[0].habits
+      currentDay = [...currentDay, action.payload]
       return {
         ...state,
-        data: action.payload,
+        user: {
+          ...state.user,
+          history: [currentDay, ...state.user.history]
+        },
         isFetching: false
       }
 
+    /*
     case ASYNC_ACTION_FAIL:
       return {
         ...state,

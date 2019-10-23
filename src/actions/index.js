@@ -1,4 +1,5 @@
-import { deleteItem, deleteTypes } from './axios_delete_action'
+import { deleteHabit, dhTypes } from './deleteHabit'
 import { getUData, getUDTypes } from './getUserData'
+import { addHabit, addHabTypes } from './addHabit'
 
-export { deleteItem, deleteTypes, getUData, getUDTypes }
+export { deleteHabit, dhTypes, getUData, getUDTypes, addHabit, addHabTypes }
