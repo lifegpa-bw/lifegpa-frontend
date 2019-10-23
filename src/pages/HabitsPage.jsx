@@ -1,14 +1,14 @@
+  
 import React from 'react'
 import { DashboardLayout } from '../components'
-import HabitForm from "../components/HabitForm"
-
+import CreateHabit  from '../components/CreateHabit'
 
 const Habits = () => {
   return (
     <DashboardLayout>
-      <HabitForm/>
+      <CreateHabit />
     </DashboardLayout>
   )
-}
+};
 
-export default Habits
+export default Habits;
