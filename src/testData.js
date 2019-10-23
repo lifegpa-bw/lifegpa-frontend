@@ -9,7 +9,7 @@ export const testData = {
   ],
   history: [
     {
-      date: 10172019,
+      date: new Date(2019, 9, 1),
       habits: [
         {
           description: 'stretch for 15 minutes',
@@ -44,7 +44,7 @@ export const testData = {
       ]
     },
     {
-      date: 10182019,
+      date: new Date(2019, 9, 2),
       habits: [
         {
           description: 'stretch for 15 minutes',
@@ -79,7 +79,7 @@ export const testData = {
       ]
     },
     {
-      date: 10192019,
+      date: new Date(2019, 9, 3),
       habits: [
         {
           description: 'stretch for 15 minutes',
@@ -114,7 +114,7 @@ export const testData = {
       ]
     },
     {
-      date: 10202019,
+      date: new Date(2019, 9, 4),
       habits: [
         {
           description: 'stretch for 15 minutes',
