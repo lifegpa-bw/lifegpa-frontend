@@ -19,7 +19,7 @@ const Habits = ({errors, touched, status }) => {
     
       <Container>
         
-         <Title>Creating habit</Title>
+         <Title>Create habit</Title>
           <HabitForm>
             { /*Description Field */}
             {touched.description && errors.description && <p>{errors.description}</p>}
@@ -37,7 +37,7 @@ const Habits = ({errors, touched, status }) => {
               </Type>
     
               { /*Category Selector Field */}
-              {touched.category && errors.category && <p>{errors.category}</p>}
+              {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
               {/* <Field name="category" component="select" placeholder="Cateogry">
                 <option color="blue" value="category1">Cateogry 1</option>
                 <option value="category2">Cateogry 2</option>
@@ -46,10 +46,18 @@ const Habits = ({errors, touched, status }) => {
                 <option value="category5">Cateogry 5</option>
               </Field> */}
              
-               <button>Add</button>
+               <Button type='submit'>Add</Button>
               
           </HabitForm>
-          <Habit />
+          {habits.map(event => (
+
+          <Habit 
+            key = {event.id}
+            description={event.description}
+            type={event.type}
+
+          />
+          ))}
       </Container>
       
     
@@ -60,13 +68,13 @@ export default withFormik({
     return {
       description: values.description || '',
       type: values.type || "",
-      category: values.category || ""
+      // category: values.category || ""
     }
   },
   validationSchema: yup.object().shape({
     description: yup.string().required('Please describe a habit'),
     type: yup.string().required('Please pick a type'),
-    category: yup.string().required('Please pick a category')
+    // category: yup.string().required('Please pick a category')
   }),
     handleSubmit:(values, { setStatus }) => {
       axios
@@ -106,5 +114,11 @@ const Type = styled(Field)`
   padding:5px;
   border-radius:5px;
 
+`
+
+const Button = styled.button`
+  border-radius:5px;
+  background:pink;
+  width:20%;
 `
 

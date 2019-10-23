@@ -1,12 +1,13 @@
-import React from 'react'
-import Habits from '../components/CreateHabit'
+import React from 'react';
+import { DashboardLayout } from '../components';
+import Habits from '../components/CreateHabit';
 
 
 const Habit = () => {
   return (
-    <div>
+    <DashboardLayout>
       <Habits />
-    </div>
+    </DashboardLayout>
   )
 }
 export default Habit;
