@@ -119,4 +119,3 @@ const Button = styled.button`
   background:pink;
   width:20%;
 `
-
