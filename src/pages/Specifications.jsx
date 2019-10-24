@@ -1,19 +1,18 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-
 import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-// import "./styles.css";
 import { specifications, testData } from "../testData"
 
 function Specifications() {
-  // console.log(">>>:", {testData.categories[0].color})
+
   return (
     <div className="wrapper">
       <h1>Specifications</h1>
       <div className="specifications">
+        <div>
            <CircularProgressbar
        className="progressBar"
           value={specifications.exercise}
@@ -24,6 +23,9 @@ function Specifications() {
             trailColor: "grey"
           })}
         />
+        {testData.categories[0].description}
+        </div>
+        <div>
         <CircularProgressbar
        className="progressBar"
           value={specifications.diet}
@@ -34,6 +36,9 @@ function Specifications() {
             trailColor: "grey"
           })}
         />
+         {testData.categories[1].description}
+        </div>
+        <div>
         <CircularProgressbar
        className="progressBar"
           value={specifications.hygiene}
@@ -44,6 +49,9 @@ function Specifications() {
             trailColor: "grey"
           })}
         />
+         {testData.categories[2].description}
+        </div>
+        <div>
         <CircularProgressbar
        className="progressBar"
           value={specifications.social}
@@ -54,6 +62,9 @@ function Specifications() {
             trailColor: "grey"
           })}
         />
+         {testData.categories[3].description}
+        </div>
+        <div>
        <CircularProgressbar
        className="progressBar"
           value={specifications.drugs}
@@ -64,6 +75,8 @@ function Specifications() {
             trailColor: "grey"
           })}
         />
+         {testData.categories[4].description}
+        </div>
   </div>
   </div>
   )
