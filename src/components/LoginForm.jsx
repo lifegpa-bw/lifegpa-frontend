@@ -12,7 +12,6 @@ const Login = props => {
     password: ''
   }
 
-  const [credentials, setCredentials] = useState(initialValues)
   const [isLoading, setIsLoading] = useState(false)
 
   const history = useHistory()
@@ -27,22 +26,24 @@ const Login = props => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={() => {
+        onSubmit={values => {
+          console.log('login values', values)
           axios
             .post(`https://reqres.in/api/login`, {
               email: 'eve.holt@reqres.in',
               password: 'cityslicka'
             })
+            // .post(`https://bw-life-gpa.herokuapp.com/login`, values)
             .then(res => {
               console.log('login response', res.data)
-              localStorage.setItem('token', res.data.token)
+              localStorage.setItem('token', 'thisisajwttokenyessir')
               history.push('/dashboard')
             })
             .catch(err => {
               console.log('error on login:', err.response)
             })
         }}
-        render={({ touched, errors, ...props }) => (
+        render={({ touched, errors, values, handleChange }) => (
           <Form2>
             <Title>Login</Title>
 
@@ -51,6 +52,8 @@ const Login = props => {
                 type='text'
                 name='username'
                 placeholder='Enter Your Username'
+                value={values.username}
+                onChange={handleChange}
               />
               {touched.username && errors.username && (
                 <Errors>{errors.username}</Errors>
@@ -59,6 +62,8 @@ const Login = props => {
                 type='password'
                 name='password'
                 placeholder='Enter Your Password'
+                value={values.password}
+                onChange={handleChange}
               />
               {touched.password && errors.password && (
                 <Errors>{errors.password}</Errors>
@@ -114,7 +119,7 @@ const Buttonc = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  &:hover .buttonclass {
+  &:hover {
     background-color: black;
     color: #ffeb38;
   }
@@ -141,6 +146,9 @@ const Link1 = styled(Link)`
 const Errors = styled.p`
   font-size: 1rem;
 `
-
-
-
+/*
+            .post(`https://reqres.in/api/login`, {
+              email: 'eve.holt@reqres.in',
+              password: 'cityslicka'
+            })
+*/
