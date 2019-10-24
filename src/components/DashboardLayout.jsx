@@ -29,6 +29,7 @@ import AccountCircleTwoToneIcon from '@material-ui/icons/AccountCircleTwoTone'
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone'
 import BallotTwoToneIcon from '@material-ui/icons/BallotTwoTone'
 import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded'
+import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 // Custom Components
@@ -93,7 +94,9 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary
   },
   userProfile: {
-    width: drawerWidth
+    width: drawerWidth,
+    position: 'fixed',
+    bottom: 0
   }
 }))
 
@@ -129,7 +132,7 @@ const DashboardLayout = props => {
           }
         >
           <ListItemIcon>
-            <DonutLargeRoundedIcon />
+            <HomeTwoToneIcon />
           </ListItemIcon>
           <ListItemText primary='Dashboard' />
         </ListItem>
@@ -178,19 +181,39 @@ const DashboardLayout = props => {
           </ListItemIcon>
           <ListItemText primary='My Habits' />
         </ListItem>
+
+        <ListItem
+          to='/specifications'
+          component={NavLink}
+          className={
+            location.pathname === '/specifications'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <DonutLargeRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Specifications' />
+        </ListItem>
       </List>
       <Box className={classes.userProfile} pb={2}>
         <Divider />
         <Box display='flex' align='center' justifyContent='center' p={2}>
-          <Fab
-            variant='extended'
+          <AccountCircleTwoToneIcon />
+          <Typography variant='body1' component='p'>
+            &emsp;Bob
+          </Typography>
+        </Box>
+        <Box display='flex' align='center' justifyContent='center' p={2}>
+          <Button
             size='small'
-            color='primary'
+            variant='outlined'
             aria-label='logout '
             onClick={() => logout()}
           >
             Log Out
-          </Fab>
+          </Button>
         </Box>
       </Box>
     </>
@@ -269,8 +292,13 @@ const DashboardLayout = props => {
 
 export default DashboardLayout
 /*
-          <AccountCircleTwoToneIcon />
-          <Typography variant='body1' component='p'>
-            &emsp;Bob
-          </Typography>
+          <Fab
+            variant='extended'
+            size='small'
+            color='primary'
+            aria-label='logout '
+            onClick={() => logout()}
+          >
+            Log Out
+          </Fab>
 */
