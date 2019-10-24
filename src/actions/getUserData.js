@@ -1,25 +1,23 @@
 import { axiosWithAuth } from '../utils'
 import { testData } from '../testData'
+import { startFetch } from './startFetch'
 
 export const getUDTypes = {
-  START: 'GET_UD_START',
   SUCCESS: 'GET_UD_SUCCESS',
   FAIL: 'GET_UD_FAIL'
 }
 
 export const getUData = () => dispatch => {
-  dispatch({ type: getUDTypes.SUCCESS, payload: testData })
-}
-/*
-  dispatch({ type: getDataTypes.START })
+  // dispatch({ type: startFetch })
   axiosWithAuth()
-    .get(`http://localhost:3333/smurfs`)
+    .get(`https://reqres.in/api/users/2`)
+    // .get(`https://bw-life-gpa.herokuapp.com/user`, )
     .then(res => {
-      // if the api call is successful trigger the SUCCESS action
-      dispatch({ type: getDataTypes.SUCCESS, payload: res.data })
+      console.log('get user data response', res.data)
+      dispatch({ type: getUDTypes.SUCCESS, payload: testData })
     })
     .catch(err => {
-      // if the api call fails trigger the FAIL action
-      dispatch({ type: getDataTypes.FAIL, payload: err.response })
+      console.log('error on login:', err.response)
+      // dispatch({ type: getUDTypes.FAIL, payload: err.response })
     })
-*/
+}
