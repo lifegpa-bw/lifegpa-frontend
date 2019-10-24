@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, useLocation, useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 // Mui
 import {
@@ -99,6 +100,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const DashboardLayout = props => {
+  const { username } = useSelector(store => store.User.user)
   const { container } = props
   const location = useLocation()
   const classes = useStyles()
@@ -106,6 +108,7 @@ const DashboardLayout = props => {
   const history = useHistory()
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
+  console.log('username in dashboard')
   const logout = () => {
     // clear user data from store
     // remove token from local storage
@@ -199,9 +202,10 @@ const DashboardLayout = props => {
         <Box display='flex' align='center' justifyContent='center' p={2}>
           <AccountCircleTwoToneIcon />
           <Typography variant='body1' component='p'>
-            &emsp;Bob
+            &emsp;{username}
           </Typography>
         </Box>
+
         <Box display='flex' align='center' justifyContent='center' p={2}>
           <Button
             size='small'

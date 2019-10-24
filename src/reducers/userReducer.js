@@ -1,6 +1,11 @@
-import { dhTypes, getUDTypes, addHabTypes, drTypes } from '../actions'
-
-// const storageUserName = localStorage.getItem('lgap-username') || ''
+import {
+  dhTypes,
+  getUDTypes,
+  addHabTypes,
+  drTypes,
+  setUserTypes,
+  startFetch
+} from '../actions'
 
 const initialState = {
   isFetching: false,
@@ -14,10 +19,24 @@ function userReducer(state = initialState, action) {
   switch (action.type) {
     // add user data to store after fetching from  server
     case getUDTypes.SUCCESS:
+      const { categories, history } = action.payload
       return {
         ...state,
         isFetching: false,
-        user: action.payload
+        user: {
+          ...state.user,
+          categories,
+          history
+        }
+      }
+
+    case setUserTypes.SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        user: {
+          username: action.payload
+        }
       }
 
     // add a habit to the daily report
@@ -40,15 +59,17 @@ function userReducer(state = initialState, action) {
         dailyReport: action.payload
       }
     case dhTypes.SUCCESS:
-        return {
-          ...state,
-          dailyReport: {
-            ...state.dailyReport,
-            habits: state.dailyReport.habits.filter(habit => habit.id !== action.payload)
-          }
+      return {
+        ...state,
+        dailyReport: {
+          ...state.dailyReport,
+          habits: state.dailyReport.habits.filter(
+            habit => habit.id !== action.payload
+          )
+        }
       }
 
-      case addHabTypes.SUCCESS:    
+    case addHabTypes.SUCCESS:
       return {
         ...state,
         dailyReport: {
@@ -57,7 +78,6 @@ function userReducer(state = initialState, action) {
         }
       }
 
-    
     /*
     case ASYNC_ACTION_FAIL:
       return {

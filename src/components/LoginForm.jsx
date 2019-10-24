@@ -5,8 +5,12 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { getUData, setUser } from '../actions'
 
 const Login = props => {
+  const { user } = useSelector(store => store.User)
+  const dispatch = useDispatch()
   const initialValues = {
     username: '',
     password: ''
@@ -15,6 +19,10 @@ const Login = props => {
   const [isLoading, setIsLoading] = useState(false)
 
   const history = useHistory()
+
+  useEffect(() => {
+    if (user.username) history.push('/dashboard')
+  }, [user])
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Username must be entered'),
@@ -28,20 +36,8 @@ const Login = props => {
         validationSchema={validationSchema}
         onSubmit={values => {
           console.log('login values', values)
-          axios
-            .post(`https://reqres.in/api/login`, {
-              email: 'eve.holt@reqres.in',
-              password: 'cityslicka'
-            })
-            // .post(`https://bw-life-gpa.herokuapp.com/login`, values)
-            .then(res => {
-              console.log('login response', res.data)
-              localStorage.setItem('token', 'thisisajwttokenyessir')
-              history.push('/dashboard')
-            })
-            .catch(err => {
-              console.log('error on login:', err.response)
-            })
+          dispatch(setUser(values))
+          // dispatch(getUData())
         }}
         render={({ touched, errors, values, handleChange }) => (
           <Form2>
@@ -151,4 +147,21 @@ const Errors = styled.p`
               email: 'eve.holt@reqres.in',
               password: 'cityslicka'
             })
+axios
+            .post(`https://reqres.in/api/login`, {
+              email: 'eve.holt@reqres.in',
+              password: 'cityslicka'
+            })
+            // .post(`https://bw-life-gpa.herokuapp.com/login`, values)
+            .then(res => {
+              console.log('login response', res.data)
+              localStorage.setItem('token', 'thisisajwttokenyessir')
+              use
+              history.push('/dashboard')
+            })
+            .catch(err => {
+              console.log('error on login:', err.response)
+            })
+
+
 */
