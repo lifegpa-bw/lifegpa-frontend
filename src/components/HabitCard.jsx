@@ -2,16 +2,10 @@ import React, { useState } from 'react'
 import Habits from '../components/CreateHabit'
 import styled from 'styled-components'
 
-<<<<<<< HEAD
-const Habit = (props) => {
-  console.log("props passed", props);
-=======
 const Habit = props => {
->>>>>>> master
   return (
     
     <Card>
-<<<<<<< HEAD
         <DescriptionInput> {props.description} </DescriptionInput>
         {/* <p> {props.type} </p> */}
       <Buttons>
@@ -23,12 +17,6 @@ const Habit = props => {
           </Button>
       </Buttons>
 
-=======
-      <p> {props.description} </p>
-      <p> {props.type} </p>
-      <Button onClick={() => props.deleteHabit(props.id)}>Delete</Button>
-      <Button onClick={() => props.startEdit(props.id)}>Edit</Button>
->>>>>>> master
     </Card>
   )
 }
@@ -43,7 +31,6 @@ const DescriptionInput = styled.div`
 `
 
 const Card = styled.div`
-<<<<<<< HEAD
 display:flex;
 justify-content:space-evenly;
 margin:10px auto;
@@ -77,17 +64,3 @@ height:30px;
   background: pink;
 }
 `
-=======
-  border-radius: 10px;
-  background: #f5deb3;
-  display: flex;
-  justify-content: space-around;
-  margin: 10px auto;
-  text-align: center;
-  width: 80%;
-`
-const Button = styled.button`
-  border-radius: 5px;
-  background: pink;
-`
->>>>>>> master

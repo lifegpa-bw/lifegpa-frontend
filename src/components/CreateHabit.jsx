@@ -12,7 +12,6 @@ const Habits = ({ errors, touched, status, ...props }) => {
   const habits = props.dailyReport.habits
 
   return (
-<<<<<<< HEAD
       <Container>
         
          <Title>Habits</Title>
@@ -35,38 +34,12 @@ const Habits = ({ errors, touched, status, ...props }) => {
               { /*Category Selector Field */}
               {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
               {/* <Field name="category" component="select" placeholder="Cateogry">
-=======
-    <Container>
-      <Title>Create habit</Title>
-      <HabitForm>
-        {/*Description Field */}
-        {touched.description && errors.description && (
-          <Error>{errors.description}</Error>
-        )}
-        <Description
-          type='text'
-          name='description'
-          placeholder='Create Habit'
-        />
-        {/*Good/Bad Field */}
-        {touched.type && errors.type && <Error>{errors.type}</Error>}
-        <Type name='type' component='select' placeholder='Type'>
-          <option>Type</option>
-          <option value='Good'>Good</option>
-          <option value='Bad'>Bad</option>
-        </Type>
-
-        {/*Category Selector Field */}
-        {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
-        {/* <Field name="category" component="select" placeholder="Cateogry">
->>>>>>> master
                 <option color="blue" value="category1">Cateogry 1</option>
                 <option value="category2">Cateogry 2</option>
                 <option value="category3">Cateogry 3</option>
                 <option value="category4">Cateogry 4</option>
                 <option value="category5">Cateogry 5</option>
               </Field> */}
-<<<<<<< HEAD
              
                <Button type='submit'>Add</Button>
               
@@ -87,21 +60,6 @@ const Habits = ({ errors, touched, status, ...props }) => {
       </Container>
       
     
-=======
-
-        <Button type='submit'>Add</Button>
-      </HabitForm>
-      {habits.map(habit => (
-        <Habit
-          key={habit.id}
-          description={habit.description}
-          type={habit.type}
-          deleteHabit={props.deleteHabit}
-          id={habit.id}
-        />
-      ))}
-    </Container>
->>>>>>> master
   )
 }
 const LoginFormik = withFormik({
