@@ -21,7 +21,7 @@ const Habits = ({ errors, touched, status, ...props }) => {
   return (
       <Container>
         
-         <Title>Create habit</Title>
+         <Title>Habits</Title>
           <HabitForm>
             { /*Description Field */}
             {touched.description && errors.description && <Error>{errors.description}</Error>}
@@ -51,6 +51,10 @@ const Habits = ({ errors, touched, status, ...props }) => {
                <Button type='submit'>Add</Button>
               
           </HabitForm>
+          <Guide>
+            <GuideMain>Your Habits</GuideMain>
+            {/* <GuideMain>Type</GuideMain> */}
+          </Guide> <br></br>
           {habits.map(habit => (
 
           <Habit 
@@ -58,9 +62,7 @@ const Habits = ({ errors, touched, status, ...props }) => {
             description={habit.description}
             type={habit.type}
             deleteHabit={props.deleteHabit}
-            id = {habit.id}
-            editHabit={props.editHabit}
-          />
+            id = {habit.id}          />
           ))}
       </Container>
       
@@ -104,13 +106,13 @@ export default connect(
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content:space-between;
 `
 const HabitForm = styled(Form)`
   display: flex;
-  justify-content: space-between;
-  width: 50%;
+  justify-content: space-around;
+  width: 40%;
   margin: auto;
-  // background:black;
 `
 const Title = styled.h1`
   color: blue;
@@ -119,16 +121,29 @@ const Title = styled.h1`
 const Description = styled(Field)`
   padding: 5px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 5px; 
 `
 const Type = styled(Field)`
   padding: 5px;
   border-radius: 5px;
+  margin:auto;
+`
+ const Guide = styled.div`
+  // display:flex;
+  // flex-direction:row;
+  // justify-content:space-between;
+  margin:2px auto;
+  padding:2px;
+`
+const GuideMain = styled.h3 `
+    color:#FFD700;
+    margin:40px auto -15px;
+    text-decoration:underline;
 `
 
 const Button = styled.button`
   border-radius: 5px;
-  background: pink;
+  background:slateblue;
   width: 20%;
 `
 const Error = styled.p`

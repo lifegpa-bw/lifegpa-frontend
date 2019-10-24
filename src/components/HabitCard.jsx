@@ -6,31 +6,56 @@ import styled from 'styled-components'
 const Habit = (props) => {
   console.log("props passed", props);
   return (
+    
     <Card>
-        <p> {props.description} </p>
-        <p> {props.type} </p>
-        <Button onClick={() => props.deleteHabit(props.id)}>
-          Delete
-        </Button>
-        <Button onClick={() => props.editHabit(props.id)} >
-          Edit
-        </Button>
+        <DescriptionInput> {props.description} </DescriptionInput>
+        {/* <p> {props.type} </p> */}
+      <Buttons>
+          <DeleteButton onClick={() => props.deleteHabit(props.id)}>
+            Delete
+          </DeleteButton>
+          <Button >
+            Edit
+          </Button>
+      </Buttons>
 
     </Card>
   )
 }
 export default Habit;
 
+const DescriptionInput = styled.div`
+  width:20%;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+`
+
 const Card = styled.div`
-border-radius:10px;
-background:#F5DEB3;
 display:flex;
-justify-content:space-around;
+justify-content:space-evenly;
 margin:10px auto;
 text-align:center;
-width:80%;
+width:60%;
+border-bottom:1px solid black;
+padding-bottom:5px;
+`
+const Buttons = styled.div`
+      display:flex;
+      justify-content:space-evenly;
+      width:30%;
+
 `
 const Button = styled.button`
 border-radius:5px;
 background:pink;
+width:60px;
+height:30px;
+`
+const DeleteButton = styled.button`
+border-radius:5px;
+background:salmon;
+width:60px;
+height:30px;
 `
