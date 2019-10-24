@@ -12,7 +12,7 @@ const Habit = props => {
       <Button onClick={() => dispatch(props.deleteHabit(props.id))}>
         Delete
       </Button>
-      <Button onClick={() => props.startEdit(props.id)}>Edit</Button>
+      <Button onClick={() => props.editHabit(props.id)}>Edit</Button>
     </Card>
   )
 }

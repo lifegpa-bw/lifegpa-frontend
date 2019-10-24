@@ -6,17 +6,20 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Habit from '../components/HabitCard'
-import { addHabit, deleteHabit } from '../actions'
+import { addHabit, deleteHabit, editHabit } from '../actions'
 
-// const Habits = ({ errors, touched, status, ...props }) => {
 const Habits = props => {
   const { dailyReport } = useSelector(store => store.User)
   const habits = dailyReport.habits
   const dispatch = useDispatch()
+  /*
   const [editing, setEditing] = useState({
     isEditing: false,
     editID: null
   })
+  */
+
+  const [editID, setEditID] = useState('')
 
   const validationSchema = yup.object().shape({
     description: yup.string().required('Field required'),
@@ -24,24 +27,49 @@ const Habits = props => {
     // category: yup.string().required('Please pick a category')
   })
 
-  const initialValues = {
-    description: '',
-    type: ''
+  let initialValues = null
+  // if editID use habit as initial value
+  if (editID) {
+    let toEdit = habits.filter(habit => habit.id === editID)[0]
+    initialValues = {
+      description: toEdit.description,
+      type: ''
+    }
+  } else {
+    initialValues = {
+      description: '',
+      type: ''
+    }
   }
+  // else use empy string
   return (
     <Formik
+      enableReinitialize
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={values => {
-        console.log('form submited')
-        dispatch(
-          addHabit({
-            id: Date.now(),
-            description: values.description,
-            type: values.type,
-            performed: false
-          })
-        )
+      onSubmit={(values, { resetForm }) => {
+        console.log('form values', values)
+        if (editID) {
+          dispatch(
+            editHabit({
+              id: editID,
+              description: values.description,
+              type: values.type
+            })
+          )
+          setEditID('')
+        } else {
+          dispatch(
+            addHabit({
+              id: Date.now(),
+              description: values.description,
+              type: values.type,
+              performed: false
+            })
+          )
+        }
+
+        resetForm()
       }}
       render={({ touched, errors, values, handleChange }) => (
         <Container>
@@ -84,6 +112,7 @@ const Habits = props => {
               description={habit.description}
               type={habit.type}
               deleteHabit={deleteHabit}
+              editHabit={setEditID}
               id={habit.id}
             />
           ))}

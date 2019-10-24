@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
     borderRight: 0,
-    backgroundColor: theme.palette.grey[500]
+    backgroundColor: theme.palette.grey[200]
   },
   modal: {
     top: theme.mixins.toolbar.minHeight

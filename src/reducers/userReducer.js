@@ -5,7 +5,8 @@ import {
   drTypes,
   setUserTypes,
   startFetch,
-  resetTypes
+  resetTypes,
+  editHabitTypes
 } from '../actions'
 
 const initialState = {
@@ -40,19 +41,6 @@ function userReducer(state = initialState, action) {
         }
       }
 
-    // add a habit to the daily report
-    // case addHabTypes.SUCCESS:
-    //   const currentDay = state.user.history[0].habits
-    //   currentDay = [...currentDay, action.payload]
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       history: [currentDay, ...state.user.history]
-    //     },
-    //     isFetching: false
-    //   }
-
     // store  user's daily report in separate object to simplify operations
     case drTypes.SET:
       return {
@@ -82,6 +70,26 @@ function userReducer(state = initialState, action) {
     case resetTypes.RESET:
       return { ...initialState }
 
+    case editHabitTypes.EDIT:
+      console.log('payload in reducer', action.payload)
+      return {
+        ...state,
+        dailyReport: {
+          ...state.dailyReport,
+          habits: state.dailyReport.habits.map(habit => {
+            if (habit.id === action.payload.id) {
+              return {
+                ...habit,
+                description: action.payload.description,
+                type: action.payload.type
+              }
+            } else {
+              return habit
+            }
+          })
+        }
+      }
+
     /*
     case ASYNC_ACTION_FAIL:
       return {
@@ -96,3 +104,16 @@ function userReducer(state = initialState, action) {
 }
 
 export default userReducer
+
+// add a habit to the daily report
+// case addHabTypes.SUCCESS:
+//   const currentDay = state.user.history[0].habits
+//   currentDay = [...currentDay, action.payload]
+//   return {
+//     ...state,
+//     user: {
+//       ...state.user,
+//       history: [currentDay, ...state.user.history]
+//     },
+//     isFetching: false
+//   }
