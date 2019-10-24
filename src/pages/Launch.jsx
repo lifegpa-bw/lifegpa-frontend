@@ -35,12 +35,13 @@ justify-content: center;
 align-items: center;
 background-color: black;
 color: #fff;
+font-family: 'Rajdhani', sans-serif;
 
 
 `
 
 const Title = styled.h3`
-font-size: 1rem;
+font-size: 1.5rem;
 color: #C4C4C4;
 `
 
@@ -66,6 +67,7 @@ color: black;
 background-color: #FFEB38;
 width: 300px;
 margin-top: 5%;
+font-family: 'Rajdhani', sans-serif;
 
 `
 const Button2 = styled.button`
@@ -77,5 +79,5 @@ color: black;
 background-color: #fff;
 width: 300px;
 margin-top: 5%;
-
+font-family: 'Rajdhani', sans-serif;
 `

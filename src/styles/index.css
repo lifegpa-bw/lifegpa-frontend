@@ -150,3 +150,10 @@ html {
   line-height: 26px;
   color: #4f4f4f;
 }
+
+.nav {
+  background-color: black;
+}
+.navtext {
+  color: #FFEB38;
+}

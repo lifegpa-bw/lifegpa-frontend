@@ -88,13 +88,14 @@ export default Login
 //styling
 
 const Main = styled.div`
-  height: 92vh;
+  height: 84vh;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  
 `
 const Form2 = styled(Form)`
   border: 1px solid black;
@@ -111,17 +112,21 @@ const Text = styled.div`
   padding: 60px;
 `
 const Input = styled(Field)`
-  width: 100%;
+  width: 15rem;
+  height: 3rem;
   margin-top: 5%;
   margin-bottom: 5%;
+  font-family: 'Rajdhani', sans-serif;
+  text-align: center;
+  
 `
 const Buttonc = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  &:hover {
+  &:hover .buttonclass{
     background-color: black;
-    color: #ffeb38;
+    color: #fff;
   }
 `
 
@@ -133,6 +138,7 @@ const Button = styled.button`
   padding: 5%;
   border-radius: 3px;
   font-size: 1.5rem;
+  font-family: 'Rajdhani', sans-serif;
 `
 
 const Newlink = styled.p`
