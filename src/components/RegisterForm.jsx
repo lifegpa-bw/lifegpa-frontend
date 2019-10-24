@@ -32,16 +32,24 @@ const Register = ({ errors, touched }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}
-        onSubmit={({ values }) => {
+        onSubmit={(values, actions) => {
+          actions.setStatus({ nametaken: null })
           axios
-            .post(`https://reqres.in/api/users`, values)
-            .then(event => {
-              console.log('login response', event)
+            .post(`https://bw-life-gpa.herokuapp.com/createnewuser`, values)
+            .then(res => {
+              console.log('register response', res)
               history.push('/login')
             })
-            .catch(err => console.log(err.e))
+            .catch(err => {
+              console.log('error request', err.request)
+              console.log('error response', err.response)
+              if (err.response.data.detail) {
+                actions.setStatus({ nametaken: err.response.data.detail })
+              }
+            })
         }}
-        render={({ touched, errors }) => (
+        initialStatus={{}}
+        render={({ status, values, touched, errors, handleChange }) => (
           <Form2>
             <Title>Register</Title>
             <Text>
@@ -49,6 +57,8 @@ const Register = ({ errors, touched }) => {
                 type='text'
                 name='username'
                 placeholder='Create a Username'
+                onChange={handleChange}
+                value={values.username}
               />
               {touched.username && errors.username && (
                 <Errors>{errors.username}</Errors>
@@ -57,13 +67,22 @@ const Register = ({ errors, touched }) => {
                 type='password'
                 name='password'
                 placeholder='Create a Password'
+                onChange={handleChange}
+                value={values.password}
               />
               {touched.password && errors.password && (
                 <Errors>{errors.password}</Errors>
               )}
-              <Input type='email' name='email' placeholder='Enter Your Email' />
+              <Input
+                type='email'
+                name='email'
+                placeholder='Enter Your Email'
+                onChange={handleChange}
+                value={values.email}
+              />
               {touched.email && errors.email && <Errors>{errors.email}</Errors>}
             </Text>
+            {status.nametaken && <p>{status.nametaken}</p>}
             <Buttonc>
               <Button className='buttonclass'>Register</Button>
             </Buttonc>
@@ -137,3 +156,5 @@ const Link1 = styled(Link)`
 const Errors = styled.p`
   font-size: 1rem;
 `
+
+// .post(`https://reqres.in/api/users`, values)
