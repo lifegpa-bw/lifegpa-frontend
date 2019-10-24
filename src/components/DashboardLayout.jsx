@@ -65,7 +65,9 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
-    borderRight: 0,
+    borderRight: '1px solid black',
+    backgroundColor: 'white',
+    
   },
   modal: {
     top: theme.mixins.toolbar.minHeight
@@ -80,7 +82,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    color: theme.palette.text.primary,
+    backgroundColor: 'white',
+    color: 'black',
+    //nav here 
     transition: 'background 0.3s',
     '&:hover': {
       background: theme.palette.primary.main
@@ -94,6 +98,7 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     position: 'fixed',
     bottom: 0,
+    borderRight: '1px solid black',
     backgroundColor: 'white'
 
   }
@@ -118,7 +123,7 @@ const DashboardLayout = props => {
   }
 
   const drawer = (
-    <div className="all">
+    <div>
       <List>
         <ListItem
           to='/dashboard'
@@ -201,6 +206,7 @@ const DashboardLayout = props => {
           <AccountCircleTwoToneIcon />
           <Typography variant='body1' component='p'>
             &emsp;Bob
+            {/* this has to be set to specific user */}
           </Typography>
         </Box>
         <Box className="wtf" display='flex' align='center' justifyContent='center' p={2}>
