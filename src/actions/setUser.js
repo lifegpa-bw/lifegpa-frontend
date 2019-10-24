@@ -22,6 +22,7 @@ export const setUser = data => dispatch => {
     .then(res => {
       console.log(res)
       localStorage.setItem('token', res.data.access_token)
+      localStorage.setItem('username', data.username)
       //props.setUserID(res.data.<whatever the user id is>)
       dispatch({ type: setUserTypes.SUCCESS, payload: data.username })
     })

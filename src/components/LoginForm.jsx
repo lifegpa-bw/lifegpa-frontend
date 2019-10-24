@@ -11,12 +11,11 @@ import { getUData, setUser } from '../actions'
 const Login = props => {
   const { user } = useSelector(store => store.User)
   const dispatch = useDispatch()
+  let storedUsername = localStorage.getItem('username') || ''
   const initialValues = {
-    username: '',
+    username: storedUsername,
     password: ''
   }
-
-  const [isLoading, setIsLoading] = useState(false)
 
   const history = useHistory()
 
