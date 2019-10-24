@@ -141,7 +141,7 @@ const Dashboard = props => {
       <div className="progress-bar">
         <CircularProgressbar
           value={percentage}
-          text={`LPGA ${percentage}`}
+          text={`LGPA ${percentage}`}
           styles={buildStyles({
             textColor: "black",
             pathColor: "yellow",
@@ -149,6 +149,14 @@ const Dashboard = props => {
           })}
         />
       </div>
+      {/* <CircularProgressbarWithChildren value={66}>
+              <div style={{ fontSize: 12, marginTop: -5 }}>
+          LPGA
+        </div>
+        <div style={{ fontSize: 12, marginTop: -5 }}>
+          <strong>{specifications.drugs}</strong>
+        </div>
+      </CircularProgressbarWithChildren> */}
       <div className="begin-button">
         <button>Begin Daily Report</button>
       </div>

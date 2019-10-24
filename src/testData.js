@@ -15,9 +15,9 @@ export const testData = {
   categories: [
     { id: 1, description: 'exercise', color: '#10aff4' },
     { id: 2, description: 'diet', color: '#ff11fa' },
-    { id: 3, description: 'hygiene', color: 'cbcc4a' },
+    { id: 3, description: 'hygiene', color: 'yellow' },
     { id: 4, description: 'social', color: '#454a11' },
-    { id: 5, description: 'drugs', color: '#bbc184' }
+    { id: 5, description: 'drugs', color: 'red' }
   ],
   history: [
     {
