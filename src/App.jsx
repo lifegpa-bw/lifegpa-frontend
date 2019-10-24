@@ -8,7 +8,8 @@ import {
   Dashboard,
   History,
   Habits,
-  DailyReport
+  DailyReport,
+  Specifications
 } from './pages'
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
         <Route exact path='/' component={Launch} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
-        <PrivateRoute path='/history' component={History} />
         <PrivateRoute path='/dashboard' component={Dashboard} />
+        <PrivateRoute path='/history' component={History} />
+        <PrivateRoute path='/specifications' component={Specifications} />
         <PrivateRoute path='/report' component={DailyReport} />
         <PrivateRoute path='/habits' component={Habits} />
       </Switch>

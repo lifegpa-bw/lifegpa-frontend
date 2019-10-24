@@ -5,5 +5,15 @@ import Dashboard from './Dashboard'
 import Habits from './HabitsPage'
 import DailyReport from './DailyReport'
 import History from './History'
+import Specifications from './Specifications'
 
-export { Launch, Register, Login, Dashboard, History, DailyReport, Habits }
+export {
+  Launch,
+  Register,
+  Login,
+  Dashboard,
+  History,
+  DailyReport,
+  Habits,
+  Specifications
+}

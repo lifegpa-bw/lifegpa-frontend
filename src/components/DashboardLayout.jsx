@@ -29,6 +29,7 @@ import AccountCircleTwoToneIcon from '@material-ui/icons/AccountCircleTwoTone'
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone'
 import BallotTwoToneIcon from '@material-ui/icons/BallotTwoTone'
 import CategoryRoundedIcon from '@material-ui/icons/CategoryRounded'
+import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 // Custom Components
@@ -46,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     // app bar is always above menu
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: 3000,
     minHeight: theme.mixins.toolbar.minHeight,
     backgroundColor: theme.palette.common.black
   },
@@ -62,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.mixins.toolbar.minHeight
   },
   drawerPaper: {
-    marginTop: theme.mixins.toolbar.minHeight,
+    paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
     borderRight: 0,
     backgroundColor: theme.palette.grey[500]
@@ -80,7 +81,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    // background: `linear-gradient(45deg, orange 30%, ${theme.palette.primary.main} 60%, orange)`,
     color: theme.palette.text.primary,
     transition: 'background 0.3s',
     '&:hover': {
@@ -88,12 +88,13 @@ const useStyles = makeStyles(theme => ({
     }
   },
   'navLink-active': {
-    // background: `linear-gradient(0deg,  orange 15%,  ${theme.palette.primary.light} 60%)`,
     background: theme.palette.primary.main,
     color: theme.palette.text.primary
   },
   userProfile: {
-    width: drawerWidth
+    width: drawerWidth,
+    position: 'fixed',
+    bottom: 0
   }
 }))
 
@@ -112,7 +113,6 @@ const DashboardLayout = props => {
     history.push('/')
   }
   const handleDrawerToggle = () => {
-    console.log('handle drawer called')
     setMobileOpen(!mobileOpen)
   }
 
@@ -129,7 +129,7 @@ const DashboardLayout = props => {
           }
         >
           <ListItemIcon>
-            <DonutLargeRoundedIcon />
+            <HomeTwoToneIcon />
           </ListItemIcon>
           <ListItemText primary='Dashboard' />
         </ListItem>
@@ -178,19 +178,39 @@ const DashboardLayout = props => {
           </ListItemIcon>
           <ListItemText primary='My Habits' />
         </ListItem>
+
+        <ListItem
+          to='/specifications'
+          component={NavLink}
+          className={
+            location.pathname === '/specifications'
+              ? classes['navLink-active']
+              : classes.navLink
+          }
+        >
+          <ListItemIcon>
+            <DonutLargeRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Specifications' />
+        </ListItem>
       </List>
       <Box className={classes.userProfile} pb={2}>
         <Divider />
         <Box display='flex' align='center' justifyContent='center' p={2}>
-          <Fab
-            variant='extended'
+          <AccountCircleTwoToneIcon />
+          <Typography variant='body1' component='p'>
+            &emsp;Bob
+          </Typography>
+        </Box>
+        <Box display='flex' align='center' justifyContent='center' p={2}>
+          <Button
             size='small'
-            color='primary'
+            variant='outlined'
             aria-label='logout '
             onClick={() => logout()}
           >
             Log Out
-          </Fab>
+          </Button>
         </Box>
       </Box>
     </>
@@ -216,7 +236,6 @@ const DashboardLayout = props => {
           </Typography>
         </Toolbar>
       </AppBar>
-      {/* <Toolbar id='scroll-anchor' /> */}
       {/* Drawer */}
       <nav className={classes.drawer} aria-label='mailbox folders'>
         {/* Props for sm and larger */}
@@ -229,7 +248,6 @@ const DashboardLayout = props => {
             onClose={handleDrawerToggle}
             classes={{
               paper: classes.drawerPaper
-              // modal: classes.modal
             }}
             ModalProps={{
               keepMounted: true
@@ -268,9 +286,3 @@ const DashboardLayout = props => {
 }
 
 export default DashboardLayout
-/*
-          <AccountCircleTwoToneIcon />
-          <Typography variant='body1' component='p'>
-            &emsp;Bob
-          </Typography>
-*/
