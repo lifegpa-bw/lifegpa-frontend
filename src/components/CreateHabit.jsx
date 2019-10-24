@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withFormik, Form, Field } from 'formik'
 import { connect } from 'react-redux'
-import * as yup from 'yup'
+import * as yup from 'yup' 
 import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -59,6 +59,7 @@ const Habits = ({ errors, touched, status, ...props }) => {
             type={habit.type}
             deleteHabit={props.deleteHabit}
             id = {habit.id}
+            editHabit={props.editHabit}
           />
           ))}
       </Container>

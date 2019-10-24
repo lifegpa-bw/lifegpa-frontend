@@ -56,8 +56,7 @@ function userReducer(state = initialState, action) {
           habits: [...state.dailyReport.habits, action.payload]
         }
       }
-
-    
+      
     /*
     case ASYNC_ACTION_FAIL:
       return {

@@ -4,7 +4,7 @@ import { testData } from '../testData'
 import styled from 'styled-components'
 
 const Habit = (props) => {
-
+  console.log("props passed", props);
   return (
     <Card>
         <p> {props.description} </p>
@@ -12,7 +12,7 @@ const Habit = (props) => {
         <Button onClick={() => props.deleteHabit(props.id)}>
           Delete
         </Button>
-        <Button >
+        <Button onClick={() => props.editHabit(props.id)} >
           Edit
         </Button>
 
