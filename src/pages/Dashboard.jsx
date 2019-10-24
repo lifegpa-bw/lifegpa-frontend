@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { DashboardLayout } from '../components'
 import { getUData, setDR } from '../actions'
-import { calcAvgGpa } from '../utils'
+// import { calcAvgGpa } from '../utils'
 
 const Dashboard = props => {
   const { user, dailyReport } = useSelector(store => store.User)
@@ -11,9 +11,6 @@ const Dashboard = props => {
   useEffect(() => {
     dispatch(getUData())
     if (user.history) {
-      // console.log('score for one day:', calcAvgGpa(user.history, 1))
-      // console.log('score for three days:', calcAvgGpa(user.history, 3))
-
       const today = new Date()
       console.log('user history slice', user.history.slice(-1)[0].habits)
 
@@ -36,7 +33,6 @@ const Dashboard = props => {
 
   console.log('User data in store from dashboard:', user)
   console.log(' dailyReport in store from dashboard:', dailyReport)
-
   return (
     <DashboardLayout>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
