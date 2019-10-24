@@ -10,9 +10,9 @@ function Specifications() {
 
   return (
     <div className="wrapper">
-      <h1>Specifications</h1>
+      <h1 className="specH1">Specifications</h1>
       <div className="specifications">
-        <div>
+        <div className="specProBar">
            <CircularProgressbar
        className="progressBar"
           value={specifications.exercise}
@@ -25,7 +25,7 @@ function Specifications() {
         />
         {testData.categories[0].description}
         </div>
-        <div>
+        <div className="specProBar">
         <CircularProgressbar
        className="progressBar"
           value={specifications.diet}
@@ -38,7 +38,7 @@ function Specifications() {
         />
          {testData.categories[1].description}
         </div>
-        <div>
+        <div className="specProBar">
         <CircularProgressbar
        className="progressBar"
           value={specifications.hygiene}
@@ -51,7 +51,7 @@ function Specifications() {
         />
          {testData.categories[2].description}
         </div>
-        <div>
+        <div className="specProBar">
         <CircularProgressbar
        className="progressBar"
           value={specifications.social}
@@ -64,7 +64,7 @@ function Specifications() {
         />
          {testData.categories[3].description}
         </div>
-        <div>
+        <div className="specProBar">
        <CircularProgressbar
        className="progressBar"
           value={specifications.drugs}

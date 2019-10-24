@@ -120,11 +120,33 @@ html {
 
 .progressBar {
   max-width: 150px;
-  margin: 30px 5px;
+  margin: 30px 5px 5px 5px;
   font-family: Rajdhani;
   font-style: normal;
   font-weight: normal;
   color: #4F4F4F;
   font-size: 30px;
   line-height: 38px;
+}
+
+.specProBar {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.specH1 {
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #4F4F4F;
 }
