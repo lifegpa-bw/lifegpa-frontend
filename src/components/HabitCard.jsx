@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import Habits from '../components/CreateHabit'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
 
 const Habit = props => {
+  const dispatch = useDispatch()
   return (
     <Card>
       <p> {props.description} </p>
       <p> {props.type} </p>
-      <Button onClick={() => props.deleteHabit(props.id)}>Delete</Button>
+      <Button onClick={() => dispatch(props.deleteHabit(props.id))}>
+        Delete
+      </Button>
       <Button onClick={() => props.startEdit(props.id)}>Edit</Button>
     </Card>
   )
