@@ -4,8 +4,7 @@ import {
   addHabTypes,
   drTypes,
   setUserTypes,
-  startFetch,
-  resetTypes
+  startFetch
 } from '../actions'
 
 const initialState = {
@@ -78,9 +77,6 @@ function userReducer(state = initialState, action) {
           habits: [...state.dailyReport.habits, action.payload]
         }
       }
-
-    case resetTypes.RESET:
-      return { ...initialState }
 
     /*
     case ASYNC_ACTION_FAIL:
