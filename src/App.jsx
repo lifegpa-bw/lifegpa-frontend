@@ -15,8 +15,8 @@ import Specifications from './pages/Specifications';
 function App() {
   return (
     <div className='App'>
-      <Specifications />
-      {/* <Switch>
+      {/* <Specifications /> */}
+      <Switch>
         <Route exact path='/' component={Launch} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
@@ -24,7 +24,7 @@ function App() {
         <PrivateRoute path='/dashboard' component={Dashboard} />
         <PrivateRoute path='/report' component={DailyReport} />
         <PrivateRoute path='/habits' component={Habits} />
-      </Switch> */}
+      </Switch>
     </div>
   )
 }
