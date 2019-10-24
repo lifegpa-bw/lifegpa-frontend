@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core'
 export default () => (
   <AppBar position='static'  >
     <Toolbar className="nav">
-      <Typography variant='h3' className="navtext">
+      <Typography variant='h5' className="navtext">
         LifeGPA
       </Typography>
     </Toolbar>

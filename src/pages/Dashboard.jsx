@@ -54,7 +54,7 @@ const Dashboard = props => {
     percentage = calcAvgGpa(user.history, 3)
   }
   return (
-    <DashboardLayout>
+    <DashboardLayout >
       <div className='dash-board'>
         <div className='progress-bar'>
           <CircularProgressbarWithChildren

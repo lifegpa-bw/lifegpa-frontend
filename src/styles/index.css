@@ -74,7 +74,8 @@ html {
   align-content: center;
   justify-content: space-evenly;
   flex-direction: column;
-  /* background-color: red */
+
+
 }
 .progress-bar {
   display: flex;
@@ -156,4 +157,8 @@ html {
 }
 .navtext {
   color: #FFEB38;
+}
+
+.all {
+  background: #fff;
 }

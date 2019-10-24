@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom'
 
 const registerSchema = Yup.object().shape({
   username: Yup.string()
-    .required('You must create a username before continuing')
+    .required('You must create a username ')
     .min(4, 'must be 4 or more characters')
-    .max(15, 'thats a bit long, make it less than 15 characters'),
+    .max(15, 'less than 15 characters'),
   password: Yup.string()
     .required('Password must be entered')
     .min(4, 'must be 4 or more characters')
-    .max(15, 'thats a bit long, make it less than 15 characters'),
-  email: Yup.string().required('You must enter a valid email address')
+    .max(15, 'less than 15 characters'),
+  email: Yup.string().required('Enter a valid email address')
 })
 
 const Register = ({ errors, touched }) => {
@@ -160,6 +160,7 @@ const Link1 = styled(Link)`
 
 const Errors = styled.p`
   font-size: 1rem;
+  text-align: center;
 `
 
 // .post(`https://reqres.in/api/users`, values)

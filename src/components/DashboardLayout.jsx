@@ -66,7 +66,6 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
     borderRight: 0,
-    backgroundColor: theme.palette.grey[500]
   },
   modal: {
     top: theme.mixins.toolbar.minHeight
@@ -94,7 +93,9 @@ const useStyles = makeStyles(theme => ({
   userProfile: {
     width: drawerWidth,
     position: 'fixed',
-    bottom: 0
+    bottom: 0,
+    backgroundColor: 'white'
+
   }
 }))
 
@@ -117,7 +118,7 @@ const DashboardLayout = props => {
   }
 
   const drawer = (
-    <>
+    <div className="all">
       <List>
         <ListItem
           to='/dashboard'
@@ -202,7 +203,7 @@ const DashboardLayout = props => {
             &emsp;Bob
           </Typography>
         </Box>
-        <Box display='flex' align='center' justifyContent='center' p={2}>
+        <Box className="wtf" display='flex' align='center' justifyContent='center' p={2}>
           <Button
             size='small'
             variant='outlined'
@@ -213,7 +214,7 @@ const DashboardLayout = props => {
           </Button>
         </Box>
       </Box>
-    </>
+    </div>
   )
 
   return (

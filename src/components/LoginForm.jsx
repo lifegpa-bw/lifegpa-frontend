@@ -151,6 +151,7 @@ const Link1 = styled(Link)`
 
 const Errors = styled.p`
   font-size: 1rem;
+  text-align: center;
 `
 /*
             .post(`https://reqres.in/api/login`, {
