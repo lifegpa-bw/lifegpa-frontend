@@ -121,4 +121,10 @@ html {
 .progressBar {
   max-width: 150px;
   margin: 30px 5px;
+  font-family: Rajdhani;
+  font-style: normal;
+  font-weight: normal;
+  color: #4F4F4F;
+  font-size: 30px;
+  line-height: 38px;
 }
