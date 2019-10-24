@@ -4,6 +4,7 @@ import { addHabit, addHabTypes } from './addHabit'
 import { setDR, drTypes } from './setDailyReport'
 import { setUser, setUserTypes } from './setUser'
 import { startFetch } from './startFetch'
+import { resetStore, resetTypes } from './resetStore'
 
 export {
   deleteHabit,
@@ -16,5 +17,7 @@ export {
   drTypes,
   setUser,
   setUserTypes,
-  startFetch
+  startFetch,
+  resetStore,
+  resetTypes
 }
