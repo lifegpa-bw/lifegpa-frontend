@@ -49,13 +49,20 @@ const Buttons = styled.div`
 `
 const Button = styled.button`
 border-radius:5px;
-background:pink;
+background:white;
 width:60px;
 height:30px;
+
+&:hover {
+  background: yellow;
+}
 `
 const DeleteButton = styled.button`
 border-radius:5px;
-background:salmon;
+background:white;
 width:60px;
 height:30px;
+&:hover {
+  background: pink;
+}
 `
