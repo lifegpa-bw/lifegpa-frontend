@@ -37,7 +37,6 @@ const Login = props => {
         onSubmit={values => {
           console.log('login values', values)
           dispatch(setUser(values))
-          // dispatch(getUData())
         }}
         render={({ touched, errors, values, handleChange }) => (
           <Form2>
