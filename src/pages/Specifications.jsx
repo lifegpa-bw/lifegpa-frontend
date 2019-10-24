@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import {
   CircularProgressbar,
   CircularProgressbarWithChildren,
@@ -11,6 +12,10 @@ import { DashboardLayout } from '../components'
 import { specifications, testData } from '../testData'
 
 function Specifications() {
+  const { user, dailyReport } = useSelector(store => store.User)
+  console.log('user data in Spec page', user)
+  console.log('dailyReport data in Spec page', dailyReport)
+
   return (
     <DashboardLayout>
       <div className='wrapper'>

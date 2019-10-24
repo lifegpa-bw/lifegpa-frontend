@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     // app bar is always above menu
-    zIndex: theme.zIndex.drawer + 1,
+    zIndex: 3000,
     minHeight: theme.mixins.toolbar.minHeight,
     backgroundColor: theme.palette.common.black
   },
@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.mixins.toolbar.minHeight
   },
   drawerPaper: {
-    marginTop: theme.mixins.toolbar.minHeight,
+    paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
     borderRight: 0,
     backgroundColor: theme.palette.grey[500]
@@ -81,7 +81,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    // background: `linear-gradient(45deg, orange 30%, ${theme.palette.primary.main} 60%, orange)`,
     color: theme.palette.text.primary,
     transition: 'background 0.3s',
     '&:hover': {
@@ -89,7 +88,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   'navLink-active': {
-    // background: `linear-gradient(0deg,  orange 15%,  ${theme.palette.primary.light} 60%)`,
     background: theme.palette.primary.main,
     color: theme.palette.text.primary
   },
@@ -115,7 +113,6 @@ const DashboardLayout = props => {
     history.push('/')
   }
   const handleDrawerToggle = () => {
-    console.log('handle drawer called')
     setMobileOpen(!mobileOpen)
   }
 
@@ -239,7 +236,6 @@ const DashboardLayout = props => {
           </Typography>
         </Toolbar>
       </AppBar>
-      {/* <Toolbar id='scroll-anchor' /> */}
       {/* Drawer */}
       <nav className={classes.drawer} aria-label='mailbox folders'>
         {/* Props for sm and larger */}
@@ -252,7 +248,6 @@ const DashboardLayout = props => {
             onClose={handleDrawerToggle}
             classes={{
               paper: classes.drawerPaper
-              // modal: classes.modal
             }}
             ModalProps={{
               keepMounted: true
@@ -291,14 +286,3 @@ const DashboardLayout = props => {
 }
 
 export default DashboardLayout
-/*
-          <Fab
-            variant='extended'
-            size='small'
-            color='primary'
-            aria-label='logout '
-            onClick={() => logout()}
-          >
-            Log Out
-          </Fab>
-*/

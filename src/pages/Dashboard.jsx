@@ -20,11 +20,10 @@ const Dashboard = props => {
   let percentage = 9
 
   useEffect(() => {
-    dispatch(getUData())
-    if (user.history) {
-      // console.log('score for one day:', calcAvgGpa(user.history, 1))
-      // console.log('score for three days:', calcAvgGpa(user.history, 3))
-
+    if (!user.history) {
+      dispatch(getUData())
+    }
+    if (user.history && !dailyReport.habits) {
       const today = new Date()
       console.log('user history slice', user.history.slice(-1)[0].habits)
 
