@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink, useLocation, useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { resetStore } from '../actions'
 
 // Mui
 import {
@@ -65,9 +67,8 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
-    borderRight: '1px solid black',
-    backgroundColor: 'white',
-    
+    borderRight: 0,
+    backgroundColor: theme.palette.grey[300]
   },
   modal: {
     top: theme.mixins.toolbar.minHeight
@@ -82,9 +83,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     color: 'black',
-    //nav here 
+    //nav here
     transition: 'background 0.3s',
     '&:hover': {
       background: theme.palette.primary.main
@@ -97,14 +98,15 @@ const useStyles = makeStyles(theme => ({
   userProfile: {
     width: drawerWidth,
     position: 'fixed',
-    bottom: 0,
-    borderRight: '1px solid black',
-    backgroundColor: 'white'
-
+    bottom: 0
+    // borderRight: '1px solid black',
+    // backgroundColor: 'white'
   }
 }))
 
 const DashboardLayout = props => {
+  const { username } = useSelector(store => store.User.user)
+  const dispatch = useDispatch()
   const { container } = props
   const location = useLocation()
   const classes = useStyles()
@@ -112,8 +114,10 @@ const DashboardLayout = props => {
   const history = useHistory()
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
+  console.log('username in dashboard')
   const logout = () => {
     // clear user data from store
+    dispatch(resetStore())
     // remove token from local storage
     localStorage.removeItem('token')
     history.push('/')
@@ -205,11 +209,11 @@ const DashboardLayout = props => {
         <Box display='flex' align='center' justifyContent='center' p={2}>
           <AccountCircleTwoToneIcon />
           <Typography variant='body1' component='p'>
-            &emsp;Bob
-            {/* this has to be set to specific user */}
+            &emsp;{username}
           </Typography>
         </Box>
-        <Box className="wtf" display='flex' align='center' justifyContent='center' p={2}>
+
+        <Box display='flex' align='center' justifyContent='center' p={2}>
           <Button
             size='small'
             variant='outlined'

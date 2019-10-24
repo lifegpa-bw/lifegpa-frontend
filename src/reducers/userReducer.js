@@ -1,6 +1,13 @@
-import { dhTypes, getUDTypes, addHabTypes, drTypes } from '../actions'
-
-// const storageUserName = localStorage.getItem('lgap-username') || ''
+import {
+  dhTypes,
+  getUDTypes,
+  addHabTypes,
+  drTypes,
+  setUserTypes,
+  startFetch,
+  resetTypes,
+  editHabitTypes
+} from '../actions'
 
 const initialState = {
   isFetching: false,
@@ -14,24 +21,25 @@ function userReducer(state = initialState, action) {
   switch (action.type) {
     // add user data to store after fetching from  server
     case getUDTypes.SUCCESS:
+      const { categories, history } = action.payload
       return {
         ...state,
         isFetching: false,
-        user: action.payload
+        user: {
+          ...state.user,
+          categories,
+          history
+        }
       }
 
-    // add a habit to the daily report
-    // case addHabTypes.SUCCESS:
-    //   const currentDay = state.user.history[0].habits
-    //   currentDay = [...currentDay, action.payload]
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       history: [currentDay, ...state.user.history]
-    //     },
-    //     isFetching: false
-    //   }
+    case setUserTypes.SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        user: {
+          username: action.payload
+        }
+      }
 
     // store  user's daily report in separate object to simplify operations
     case drTypes.SET:
@@ -40,15 +48,17 @@ function userReducer(state = initialState, action) {
         dailyReport: action.payload
       }
     case dhTypes.SUCCESS:
-        return {
-          ...state,
-          dailyReport: {
-            ...state.dailyReport,
-            habits: state.dailyReport.habits.filter(habit => habit.id !== action.payload)
-          }
+      return {
+        ...state,
+        dailyReport: {
+          ...state.dailyReport,
+          habits: state.dailyReport.habits.filter(
+            habit => habit.id !== action.payload
+          )
+        }
       }
 
-      case addHabTypes.SUCCESS:    
+    case addHabTypes.SUCCESS:
       return {
         ...state,
         dailyReport: {
@@ -57,7 +67,29 @@ function userReducer(state = initialState, action) {
         }
       }
 
-    
+    case resetTypes.RESET:
+      return { ...initialState }
+
+    case editHabitTypes.EDIT:
+      console.log('payload in reducer', action.payload)
+      return {
+        ...state,
+        dailyReport: {
+          ...state.dailyReport,
+          habits: state.dailyReport.habits.map(habit => {
+            if (habit.id === action.payload.id) {
+              return {
+                ...habit,
+                description: action.payload.description,
+                type: action.payload.type
+              }
+            } else {
+              return habit
+            }
+          })
+        }
+      }
+
     /*
     case ASYNC_ACTION_FAIL:
       return {
@@ -72,3 +104,16 @@ function userReducer(state = initialState, action) {
 }
 
 export default userReducer
+
+// add a habit to the daily report
+// case addHabTypes.SUCCESS:
+//   const currentDay = state.user.history[0].habits
+//   currentDay = [...currentDay, action.payload]
+//   return {
+//     ...state,
+//     user: {
+//       ...state.user,
+//       history: [currentDay, ...state.user.history]
+//     },
+//     isFetching: false
+//   }
