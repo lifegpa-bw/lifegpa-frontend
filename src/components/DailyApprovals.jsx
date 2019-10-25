@@ -103,7 +103,7 @@ export default function DailyApprovals() {
               Yes
             </button>
             <button
-              class='btn'
+              className='btn'
               id='btn2'
               // onClick={() => onNoHandle(report.id)}
             >
