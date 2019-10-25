@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
-    borderRight: '1px solid black',
+    borderRight: '1px solid #00000014',
     backgroundColor: theme.palette.grey[300]
   },
   modal: {
@@ -99,7 +99,7 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     position: 'fixed',
     bottom: 0,
-    borderRight: '1px solid black',
+    borderRight: '1px solid #00000014',
     fontFamily: 'Rajdhani'
   }
 }))
