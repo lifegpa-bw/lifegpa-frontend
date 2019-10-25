@@ -78,14 +78,10 @@ function userReducer(state = initialState, action) {
           habits: [...state.dailyReport.habits, action.payload]
         }
       }
-<<<<<<< HEAD
-      
-=======
 
     case resetTypes.RESET:
       return { ...initialState }
 
->>>>>>> master
     /*
     case ASYNC_ACTION_FAIL:
       return {

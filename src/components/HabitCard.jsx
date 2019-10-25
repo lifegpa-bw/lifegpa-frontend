@@ -38,14 +38,16 @@ text-align:center;
 width:60%;
 border-bottom:1px solid black;
 padding-bottom:5px;
+border-radius:12px;
 `
 const Buttons = styled.div`
       display:flex;
-      justify-content:space-evenly;
-      width:30%;
+      justify-content:flex-end;
+      width:60%;
 
 `
 const Button = styled.button`
+margin:auto 10px;
 border-radius:5px;
 background:white;
 width:60px;
@@ -56,6 +58,7 @@ height:30px;
 }
 `
 const DeleteButton = styled.button`
+margin:auto 10px;
 border-radius:5px;
 background:white;
 width:60px;

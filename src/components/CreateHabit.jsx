@@ -14,7 +14,7 @@ const Habits = ({ errors, touched, status, ...props }) => {
   return (
       <Container>
         
-         <Title>Habits</Title>
+         {/* <Title>Create Habits</Title> */}
           <HabitForm>
             { /*Description Field */}
             {touched.description && errors.description && <Error>{errors.description}</Error>}
@@ -44,10 +44,9 @@ const Habits = ({ errors, touched, status, ...props }) => {
                <Button type='submit'>Add</Button>
               
           </HabitForm>
-          <Guide>
-            <GuideMain>Your Habits</GuideMain>
-            {/* <GuideMain>Type</GuideMain> */}
-          </Guide> <br></br>
+            <GuideMain>List of your Habits</GuideMain>
+            
+         
           {habits.map(habit => (
 
           <Habit 
@@ -100,16 +99,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content:space-between;
+  align-items:center;
+  margin:auto;
+  height:70vh;
 `
 const HabitForm = styled(Form)`
   display: flex;
   justify-content: space-around;
   width: 40%;
-  margin: auto;
-`
-const Title = styled.h1`
-  color: blue;
-  text-align: center;
+  margin-top:50px;
 `
 const Description = styled(Field)`
   padding: 5px;
@@ -121,26 +119,30 @@ const Type = styled(Field)`
   border-radius: 5px;
   margin:auto;
 `
- const Guide = styled.div`
-  // display:flex;
-  // flex-direction:row;
-  // justify-content:space-between;
-  margin:2px auto;
-  padding:2px;
-`
+//  const Guide = styled.div`
+//   // display:flex;
+//   // flex-direction:row;
+//   // justify-content:flex-start;
+//   margin:2px auto;
+//   padding:2px;
+// `
 const GuideMain = styled.h3 `
-    color:#FFD700;
-    margin:40px auto -15px;
-    text-decoration:underline;
+    color:black;
+    margin:40px 0 25px;
+    border-bottom:1px solid black;
 `
 
 const Button = styled.button`
   border-radius: 5px;
-  background:slateblue;
+  // background:slateblue;
   width: 20%;
+  &:hover {
+    background: purple;
+  }
 `
 const Error = styled.p`
   padding: 2px;
   color: red;
   font-size: 1.2rem;
+  margin:auto;
 `
