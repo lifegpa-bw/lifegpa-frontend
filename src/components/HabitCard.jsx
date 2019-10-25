@@ -6,7 +6,7 @@ const Habit = props => {
   return (
     
     <Card>
-         {props.type === 'Bad' ? <p className="redText">{props.type}</p> :  <p className="greenText">{props.type}</p> } 
+        <Type> {props.type === 'Bad' ? <p className="redText">{props.type}</p> :  <p className="greenText">{props.type}</p> } </Type>
         <DescriptionInput> {props.description} </DescriptionInput>
       <Buttons>
           <DeleteButton onClick={() => props.deleteHabit(props.id)}>
@@ -66,4 +66,7 @@ height:30px;
 &:hover {
   background: pink;
 }
+`
+const Type = styled.div `
+  width:35px;
 `

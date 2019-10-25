@@ -44,7 +44,7 @@ const Habits = ({ errors, touched, status, ...props }) => {
                <Button type='submit'>Add</Button>
               
           </HabitForm>
-            <GuideMain>List of your Habits</GuideMain>
+            <GuideMain>List Habits</GuideMain>
             
          
           {habits.map(habit => (
