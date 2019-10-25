@@ -132,7 +132,7 @@ export default Habits
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  font-family: 'Rajdhani', sans-serif;
 `
 const HabitForm = styled(Form)`
   display: flex;

@@ -63,7 +63,8 @@ const Dashboard = props => {
             styles={buildStyles({
               textColor: 'black',
               pathColor: 'yellow',
-              trailColor: 'grey'
+              
+
             })}
           >
             <div style={{ fontSize: 20, marginTop: -5 }}>LGPA</div>
