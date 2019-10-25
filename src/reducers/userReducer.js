@@ -7,7 +7,8 @@ import {
   startFetch,
   resetTypes,
   editHabitTypes,
-  clearErr
+  clearErr,
+  perfHabitTypes
 } from '../actions'
 
 const initialState = {
@@ -105,6 +106,25 @@ function userReducer(state = initialState, action) {
                 ...habit,
                 description: action.payload.description,
                 type: action.payload.type
+              }
+            } else {
+              return habit
+            }
+          })
+        }
+      }
+
+    case perfHabitTypes.PERFORM:
+      console.log('perfHabit payload in reducer', action.payload)
+      return {
+        ...state,
+        dailyReport: {
+          ...state.dailyReport,
+          habits: state.dailyReport.habits.map(habit => {
+            if (habit.id === action.payload.id) {
+              return {
+                ...habit,
+                performed: action.payload.performed
               }
             } else {
               return habit

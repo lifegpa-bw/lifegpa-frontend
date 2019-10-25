@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import uuid from 'react-uuid'
-import { setDR } from '../actions'
+import { setDR, perfHabit } from '../actions'
 
 function getCurrentDate() {
   const nth = function(d) {
@@ -48,6 +48,7 @@ export default function DailyApprovals() {
   console.log('daily report in store from DailyApprovals:', dailyReport)
   /*
   function onYesHandle(id) {
+    dispatch(perfHabit())
     setState(state => ({
       data: state.data.map(item => {
         if (item.id === id) {
@@ -78,7 +79,7 @@ export default function DailyApprovals() {
       })
     }))
   }
-*/
+  */
   return (
     <div className='wrapper'>
       <p className='daily-report'>Daily Report</p>
@@ -88,9 +89,7 @@ export default function DailyApprovals() {
       {dailyReport.habits.map(habit => (
         <div
           key={habit.id}
-          className={
-            habit.performed ? `${habit.className} report` : `hidden report`
-          }
+          className={habit.performed ? 'done1  report' : 'done2 report'}
         >
           <div className='reportTitle'>{habit.description}</div>
 
@@ -98,14 +97,18 @@ export default function DailyApprovals() {
             <button
               className='btn'
               id='btn1'
-              // onClick={() => onYesHandle(report.id)}
+              onClick={() =>
+                dispatch(perfHabit({ id: habit.id, performed: true }))
+              }
             >
               Yes
             </button>
             <button
               className='btn'
               id='btn2'
-              // onClick={() => onNoHandle(report.id)}
+              onClick={() =>
+                dispatch(perfHabit({ id: habit.id, performed: false }))
+              }
             >
               No
             </button>
