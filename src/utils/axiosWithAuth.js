@@ -6,9 +6,10 @@ export const axiosWithAuth = () => {
 
   // create axios instance with Auth token
   return axios.create({
+    baseURL: 'https://bw-life-gpa.herokuapp.com',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${token}`
+      Authorization: `bearer ${token}`
     }
   })
 }

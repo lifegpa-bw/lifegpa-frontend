@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
+import { axiosWithAuth } from '../utils'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -35,7 +36,13 @@ const Register = ({ errors, touched }) => {
         onSubmit={(values, actions) => {
           actions.setStatus({ nametaken: null })
           axios
-            .post(`https://bw-life-gpa.herokuapp.com/createnewuser`, values)
+            .post(`https://bw-life-gpa.herokuapp.com/createnewuser`, values, {
+              headers: {
+                // btoa is converting our client id/client secret into base64
+                Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`,
+                'Content-Type': 'application/json'
+              }
+            })
             .then(res => {
               console.log('register response', res)
               history.push('/login')

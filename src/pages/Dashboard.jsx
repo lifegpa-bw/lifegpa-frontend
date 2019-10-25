@@ -17,12 +17,13 @@ const Dashboard = props => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  let percentage = 9
+  let percentage = 0
 
   useEffect(() => {
     if (!user.history) {
       dispatch(getUData())
     }
+
     if (user.history && !dailyReport.habits) {
       const today = new Date()
       console.log('user history slice', user.history.slice(-1)[0].habits)
