@@ -133,6 +133,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Rajdhani', sans-serif;
+  justify-content: space-between;
 `
 const HabitForm = styled(Form)`
   display: flex;
