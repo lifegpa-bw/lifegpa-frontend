@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
     borderRight: 0,
-    backgroundColor: theme.palette.grey[500]
+    backgroundColor: theme.palette.grey[300]
   },
   modal: {
     top: theme.mixins.toolbar.minHeight
@@ -83,7 +83,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    color: theme.palette.text.primary,
+    // backgroundColor: 'white',
+    color: 'black',
+    //nav here
     transition: 'background 0.3s',
     '&:hover': {
       background: theme.palette.primary.main
@@ -97,6 +99,8 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     position: 'fixed',
     bottom: 0
+    // borderRight: '1px solid black',
+    // backgroundColor: 'white'
   }
 }))
 
@@ -123,7 +127,7 @@ const DashboardLayout = props => {
   }
 
   const drawer = (
-    <>
+    <div>
       <List>
         <ListItem
           to='/dashboard'
@@ -220,7 +224,7 @@ const DashboardLayout = props => {
           </Button>
         </Box>
       </Box>
-    </>
+    </div>
   )
 
   return (

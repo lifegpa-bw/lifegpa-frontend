@@ -9,14 +9,14 @@ import { Link } from 'react-router-dom'
 
 const registerSchema = Yup.object().shape({
   username: Yup.string()
-    .required('You must create a username before continuing')
+    .required('You must create a username ')
     .min(4, 'must be 4 or more characters')
-    .max(15, 'thats a bit long, make it less than 15 characters'),
+    .max(15, 'less than 15 characters'),
   password: Yup.string()
     .required('Password must be entered')
     .min(4, 'must be 4 or more characters')
-    .max(15, 'thats a bit long, make it less than 15 characters'),
-  email: Yup.string().required('You must enter a valid email address')
+    .max(15, 'less than 15 characters'),
+  email: Yup.string().required('Enter a valid email address')
 })
 
 const Register = ({ errors, touched }) => {
@@ -108,7 +108,7 @@ export default Register
 //styles
 
 const Main = styled.div`
-  height: 92vh;
+  height: 84vh;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -131,9 +131,13 @@ const Text = styled.div`
   padding: 60px;
 `
 const Input = styled(Field)`
-  width: 100%;
+  width: 15rem;
+  height: 3rem;
   margin-top: 5%;
   margin-bottom: 5%;
+  font-family: 'Rajdhani', sans-serif;
+  text-align: center;
+  
 `
 const Buttonc = styled.div`
   display: flex;
@@ -141,7 +145,7 @@ const Buttonc = styled.div`
   justify-content: center;
   &:hover .buttonclass {
     background-color: black;
-    color: #ffeb38;
+    color: #fff;
   }
 `
 const Button = styled.button`
@@ -152,6 +156,7 @@ const Button = styled.button`
   padding: 5%;
   border-radius: 3px;
   font-size: 1.5rem;
+  font-family: 'Rajdhani', sans-serif;
 `
 const Newlink = styled.p`
   font-size: 10px;
@@ -162,6 +167,7 @@ const Link1 = styled(Link)`
 
 const Errors = styled.p`
   font-size: 1rem;
+  text-align: center;
 `
 
 // .post(`https://reqres.in/api/users`, values)

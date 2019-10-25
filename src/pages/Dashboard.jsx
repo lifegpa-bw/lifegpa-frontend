@@ -17,7 +17,7 @@ const Dashboard = props => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  let percentage = 9
+  let percentage = 0
 
   useEffect(() => {
     if (!user.history) {
@@ -55,7 +55,7 @@ const Dashboard = props => {
     percentage = calcAvgGpa(user.history, 3)
   }
   return (
-    <DashboardLayout>
+    <DashboardLayout >
       <div className='dash-board'>
         <div className='progress-bar'>
           <CircularProgressbarWithChildren
