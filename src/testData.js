@@ -1,3 +1,7 @@
+import React from "react";
+import {reports} from "./components/DailyApprovals"
+
+
 export const specifications = {
   exercise: 0,
   diet: 0,
@@ -193,35 +197,36 @@ function specificationHabitAdder(params) {
         ele2.performed === true
       ) {
         trueCounterExercise++
-        specifications.exercise = trueCounterExercise
+        specifications.exercise = ((trueCounterExercise / testData.history.length) * 100).toFixed(2)
+        console.log("?????: ", testData.history.length)
       }
       if (
         ele2.description === 'stretch for 15 minutes' &&
         ele2.performed === true
       ) {
         trueCounterDiet++
-        specifications.diet = trueCounterDiet
+        specifications.diet = ((trueCounterDiet / testData.history.length) * 100).toFixed(2)
       }
       if (
         ele2.description === 'stretch for 15 minutes' &&
         ele2.performed === true
       ) {
         trueCounterHygiene++
-        specifications.hygiene = trueCounterHygiene
+        specifications.hygiene = ((trueCounterHygiene / testData.history.length) * 100).toFixed(2)
       }
       if (
         ele2.description === 'stretch for 15 minutes' &&
         ele2.performed === true
       ) {
         trueCounterSocial++
-        specifications.social = trueCounterSocial
+        specifications.social = ((trueCounterSocial / testData.history.length) * 100).toFixed(2)
       }
       if (
         ele2.description === 'stretch for 15 minutes' &&
         ele2.performed === true
       ) {
         trueCounterDrugs++
-        specifications.drugs = trueCounterDrugs
+        specifications.drugs = ((trueCounterDrugs / testData.history.length) * 100).toFixed(2)
       }
     })
   )
