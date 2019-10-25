@@ -11,7 +11,8 @@ export default createMuiTheme({
   },
   typography: {
     // set base font-size on html element to 10px
-    htmlFontSize: 10
+    htmlFontSize: 10,
+    fontFamily: "Rajdhani"
   },
   overrides: {
     MuiBackdrop: {

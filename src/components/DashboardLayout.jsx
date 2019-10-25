@@ -49,7 +49,8 @@ const useStyles = makeStyles(theme => ({
     // app bar is always above menu
     zIndex: 3000,
     minHeight: theme.mixins.toolbar.minHeight,
-    backgroundColor: theme.palette.common.black
+    backgroundColor: theme.palette.common.black,
+    fontFamily: theme.rajdhai
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -66,7 +67,9 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
     borderRight: '1px solid black',
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.grey[200],
+    
+
     
   },
   modal: {
@@ -82,7 +85,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.grey[200],
     color: 'black',
     //nav here 
     transition: 'background 0.3s',
@@ -99,7 +102,8 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     bottom: 0,
     borderRight: '1px solid black',
-    backgroundColor: 'white'
+    backgroundColor: theme.palette.grey[200],
+    fontFamily: 'Rajdhani'
 
   }
 }))
@@ -209,8 +213,9 @@ const DashboardLayout = props => {
             {/* this has to be set to specific user */}
           </Typography>
         </Box>
-        <Box className="wtf" display='flex' align='center' justifyContent='center' p={2}>
-          <Button
+        <Box  display='flex' align='center' justifyContent='center' p={2}>
+          <Button className="button"
+
             size='small'
             variant='outlined'
             aria-label='logout '

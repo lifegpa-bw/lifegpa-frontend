@@ -103,6 +103,7 @@ export default connect(
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  font-family: 'Rajdhani', sans-serif;
 `
 const HabitForm = styled(Form)`
   display: flex;
