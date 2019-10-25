@@ -68,7 +68,6 @@ const Habits = props => {
             })
           )
         }
-
         resetForm()
       }}
       render={({ touched, errors, values, handleChange }) => (
@@ -94,23 +93,10 @@ const Habits = props => {
               <option value='Bad'>Bad</option>
             </Type>
 
-            {/*Category Selector Field */}
-            {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
-            {/* <Field name="category" component="select" placeholder="Cateogry">
-                <option color="blue" value="category1">Cateogry 1</option>
-                <option value="category2">Cateogry 2</option>
-                <option value="category3">Cateogry 3</option>
-                <option value="category4">Cateogry 4</option>
-                <option value="category5">Cateogry 5</option>
-              </Field> */}
-
             <Button type='submit'>{editID ? 'Done' : 'Add'}</Button>
           </HabitForm>
-          <Guide>
-            <GuideMain>Your Habits</GuideMain>
-            {/* <GuideMain>Type</GuideMain> */}
-          </Guide>{' '}
-          <br></br>
+          <GuideMain>List Habits</GuideMain>
+
           {habits.map(habit => (
             <Habit
               key={habit.id}
@@ -145,6 +131,7 @@ const Title = styled.h1`
   color: blue;
   text-align: center;
 `
+
 const Description = styled(Field)`
   padding: 5px;
   border: 1px solid black;
@@ -155,26 +142,30 @@ const Type = styled(Field)`
   border-radius: 5px;
   margin: auto;
 `
-const Guide = styled.div`
-  // display:flex;
-  // flex-direction:row;
-  // justify-content:space-between;
-  margin: 2px auto;
-  padding: 2px;
-`
+//  const Guide = styled.div`
+//   // display:flex;
+//   // flex-direction:row;
+//   // justify-content:flex-start;
+//   margin:2px auto;
+//   padding:2px;
+// `
 const GuideMain = styled.h3`
-  color: #ffd700;
-  margin: 40px auto -15px;
-  text-decoration: underline;
+  color: black;
+  margin: 40px 0 25px;
+  border-bottom: 1px solid black;
 `
 
 const Button = styled.button`
   border-radius: 5px;
   background: slateblue;
   width: 20%;
+  &:hover {
+    background: purple;
+  }
 `
 const Error = styled.p`
   padding: 2px;
   color: red;
   font-size: 1.2rem;
+  margin: auto;
 `
