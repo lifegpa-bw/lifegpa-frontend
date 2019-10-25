@@ -6,8 +6,8 @@ const Habit = props => {
   return (
     
     <Card>
+         {props.type === 'Bad' ? <p className="redText">{props.type}</p> :  <p className="greenText">{props.type}</p> } 
         <DescriptionInput> {props.description} </DescriptionInput>
-        {/* <p> {props.type} </p> */}
       <Buttons>
           <DeleteButton onClick={() => props.deleteHabit(props.id)}>
             Delete

@@ -154,3 +154,20 @@ html {
   line-height: 26px;
   color: #4f4f4f;
 }
+
+/* Color of Habit */
+
+.initial {
+  background:white;
+}
+.greenText {
+  background-color:green;
+  border-radius:5px;
+  color:green;
+}
+
+.redText {
+  background-color:red;
+  border-radius:5px;
+  color:red;
+}

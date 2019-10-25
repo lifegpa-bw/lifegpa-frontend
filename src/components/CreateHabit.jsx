@@ -26,7 +26,7 @@ const Habits = ({ errors, touched, status, ...props }) => {
                { /*Good/Bad Field */}
                {touched.type && errors.type && <Error>{errors.type}</Error>}
               <Type name="type" component="select" placeholder="Type">
-                <option>Type</option>
+                <option value="initial">Type</option>
                 <option value="Good">Good</option>
                 <option value="Bad">Bad</option>
               </Type>
@@ -146,3 +146,5 @@ const Error = styled.p`
   font-size: 1.2rem;
   margin:auto;
 `
+
+
