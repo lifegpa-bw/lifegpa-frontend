@@ -1,12 +1,13 @@
 import axios from 'axios'
+import { startFetch } from './startFetch'
 
 export const setUserTypes = {
-  START: 'START',
   SUCCESS: 'SET_USER_SUCCESS',
   FAIL: 'SET_USER_FAIL'
 }
 
 export const setUser = data => dispatch => {
+  dispatch({ type: startFetch })
   axios
     .post(
       'https://bw-life-gpa.herokuapp.com/login',
@@ -26,7 +27,13 @@ export const setUser = data => dispatch => {
       //props.setUserID(res.data.<whatever the user id is>)
       dispatch({ type: setUserTypes.SUCCESS, payload: data.username })
     })
-    .catch(err => console.dir(err))
+    .catch(err => {
+      console.log(err.response)
+      dispatch({
+        type: setUserTypes.FAIL,
+        payload: err.response.data.error_description
+      })
+    })
 }
 
 /*

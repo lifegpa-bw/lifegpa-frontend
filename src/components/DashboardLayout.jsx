@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
-    borderRight: 0,
+    borderRight: '1px solid #00000014',
     backgroundColor: theme.palette.grey[300]
   },
   modal: {
@@ -84,7 +84,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    // backgroundColor: 'white',
     color: 'black',
     //nav here
     transition: 'background 0.3s',
@@ -100,9 +99,8 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     position: 'fixed',
     bottom: 0,
-    backgroundColor: theme.palette.grey[200],
+    borderRight: '1px solid #00000014',
     fontFamily: 'Rajdhani'
-
   }
 }))
 
@@ -116,7 +114,6 @@ const DashboardLayout = props => {
   const history = useHistory()
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
-  console.log('username in dashboard')
   const logout = () => {
     // clear user data from store
     dispatch(resetStore())
@@ -161,7 +158,7 @@ const DashboardLayout = props => {
           <ListItemText primary='Daily Report' />
         </ListItem>
 
-        <ListItem
+        {/* <ListItem
           to='/history'
           component={NavLink}
           className={
@@ -174,7 +171,7 @@ const DashboardLayout = props => {
             <TimelineIcon />
           </ListItemIcon>
           <ListItemText primary='History' />
-        </ListItem>
+        </ListItem> */}
 
         <ListItem
           to='/habits'

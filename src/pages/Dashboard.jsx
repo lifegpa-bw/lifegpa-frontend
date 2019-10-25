@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { DashboardLayout } from '../components'
 import { getUData, setDR } from '../actions'
 import { calcAvgGpa } from '../utils'
+import { Typography } from '@material-ui/core'
+import Box from '@material-ui/core/Box'
 
 import {
   CircularProgressbar,
@@ -52,22 +54,24 @@ const Dashboard = props => {
   console.log(' dailyReport in store from dashboard:', dailyReport)
 
   if (user.history) {
-    percentage = calcAvgGpa(user.history, 3)
+    percentage = calcAvgGpa(user.history, user.history.length)
   }
   return (
-    <DashboardLayout >
+    <DashboardLayout>
       <div className='dash-board'>
+        <Box m={6}>
+          <Typography variant='h2' align='center'>
+            Life GPA
+          </Typography>
+        </Box>
         <div className='progress-bar'>
           <CircularProgressbarWithChildren
             value={percentage}
             styles={buildStyles({
               textColor: 'black',
-              pathColor: 'yellow',
-              
-
+              pathColor: 'orange'
             })}
           >
-            <div style={{ fontSize: 20, marginTop: -5 }}>LGPA</div>
             <div style={{ fontSize: 80, marginTop: -5 }}>
               <strong>{percentage}</strong>
             </div>

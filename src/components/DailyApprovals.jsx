@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import uuid from 'react-uuid'
-import { setDR } from '../actions'
+import { setDR, perfHabit } from '../actions'
 
 function getCurrentDate() {
   const nth = function(d) {
@@ -41,101 +41,14 @@ function getCurrentDate() {
   return `Today ${month} ${day}${nth(day)}, Did you... ?`
 }
 
-const reports = [
-  {
-    id: uuid(),
-    title: 'Run 10 km',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Walk 10 km',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Eat fruit',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Have breakfast early',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Work during lunch',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Make the bed',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Open slack',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Do housework',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Write ideas in Post-it',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Drink less alcohol',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Study spanish',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Use forks correctly',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Call mum',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Call daddy',
-    done: false,
-    className: ''
-  }
-]
-
 export default function DailyApprovals() {
-  const [state, setState] = useState({ data: reports })
-  const dispatch = useDispatch()
   const { dailyReport } = useSelector(store => store.User)
+  const dispatch = useDispatch()
 
   console.log('daily report in store from DailyApprovals:', dailyReport)
-
+  /*
   function onYesHandle(id) {
+    dispatch(perfHabit())
     setState(state => ({
       data: state.data.map(item => {
         if (item.id === id) {
@@ -166,31 +79,37 @@ export default function DailyApprovals() {
       })
     }))
   }
-
+  */
   return (
     <div className='wrapper'>
       <p className='daily-report'>Daily Report</p>
       <p className='daily-report currDate'>{getCurrentDate()}</p>
       <hr />
 
-      {state.data.map(report => (
+      {dailyReport.habits.map(habit => (
         <div
-          key={report.id}
-          className={
-            report.done ? `${report.className} report` : `hidden report`
-          }
+          key={habit.id}
+          className={habit.performed ? 'done1  report' : 'done2 report'}
         >
-          <div className='reportTitle'>{report.title}</div>
+          <div className='reportTitle'>{habit.description}</div>
 
           <div>
             <button
               className='btn'
               id='btn1'
-              onClick={() => onYesHandle(report.id)}
+              onClick={() =>
+                dispatch(perfHabit({ id: habit.id, performed: true }))
+              }
             >
               Yes
             </button>
-            <button class='btn' id='btn2' onClick={() => onNoHandle(report.id)}>
+            <button
+              className='btn'
+              id='btn2'
+              onClick={() =>
+                dispatch(perfHabit({ id: habit.id, performed: false }))
+              }
+            >
               No
             </button>
           </div>

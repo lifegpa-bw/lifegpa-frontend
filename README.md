@@ -1,5 +1,5 @@
 Life GPA - 
-
+//
 Summary: 
 Life GPA is an application that allows you to track your adherance to any habit that you input. A user is able to input a habit that they either want to adhere to (good) or avoid (bad), and receive a daily check in. A score, or gpa, is calculated daily from their responses, and the user is able to see their progress over time. 
 

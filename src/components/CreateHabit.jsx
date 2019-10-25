@@ -68,7 +68,6 @@ const Habits = props => {
             })
           )
         }
-
         resetForm()
       }}
       render={({ touched, errors, values, handleChange }) => (
@@ -94,23 +93,10 @@ const Habits = props => {
               <option value='Bad'>Bad</option>
             </Type>
 
-            {/*Category Selector Field */}
-            {/* {touched.category && errors.category && <p>{errors.category}</p>} */}
-            {/* <Field name="category" component="select" placeholder="Cateogry">
-                <option color="blue" value="category1">Cateogry 1</option>
-                <option value="category2">Cateogry 2</option>
-                <option value="category3">Cateogry 3</option>
-                <option value="category4">Cateogry 4</option>
-                <option value="category5">Cateogry 5</option>
-              </Field> */}
-
             <Button type='submit'>{editID ? 'Done' : 'Add'}</Button>
           </HabitForm>
-          <Guide>
-            <GuideMain>Your Habits</GuideMain>
-            {/* <GuideMain>Type</GuideMain> */}
-          </Guide>{' '}
-          <br></br>
+          <GuideMain>List Habits</GuideMain>
+
           {habits.map(habit => (
             <Habit
               key={habit.id}
@@ -129,52 +115,87 @@ const Habits = props => {
 
 export default Habits
 
+const size = {
+  mobile: '425px'
+}
+export const device = {
+  mobile: `(max-width: ${size.mobile})`
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Rajdhani', sans-serif;
   justify-content: space-between;
+
+  @media ${device.mobile} {
+    min-width: 425px;
+  }
 `
 const HabitForm = styled(Form)`
   display: flex;
   justify-content: space-around;
   width: 40%;
   margin: auto;
+
+  @media ${device.mobile} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 const Title = styled.h1`
-  color: blue;
+  color: black;
   text-align: center;
 `
+
 const Description = styled(Field)`
   padding: 5px;
   border: 1px solid black;
   border-radius: 5px;
+
+  @media ${device.mobile} {
+    margin: auto;
+    margin: 10px auto;
+    width: 100%;
+  }
 `
 const Type = styled(Field)`
   padding: 5px;
   border-radius: 5px;
   margin: auto;
-`
-const Guide = styled.div`
-  // display:flex;
-  // flex-direction:row;
-  // justify-content:space-between;
-  margin: 2px auto;
-  padding: 2px;
+
+  @media ${device.mobile} {
+    margin: 10px auto;
+    width: 100%;
+  }
 `
 const GuideMain = styled.h3`
-  color: #ffd700;
-  margin: 40px auto -15px;
-  text-decoration: underline;
+  color: #c4c4c4;
+  margin: 40px auto 25px;
+  border-bottom: 1px solid black;
+  width: 60%;
 `
 
 const Button = styled.button`
   border-radius: 5px;
-  background: slateblue;
+  background: #ffeb38;
+  color: black;
   width: 20%;
+  &:hover {
+    background: black;
+    color: #ffeb38;
+  }
+
+  @media ${device.mobile} {
+    margin: 10px auto;
+    width: 100%;
+    padding: 5px;
+  }
 `
 const Error = styled.p`
   padding: 2px;
   color: red;
   font-size: 1.2rem;
+  margin: auto;
 `

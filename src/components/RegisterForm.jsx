@@ -89,7 +89,9 @@ const Register = ({ errors, touched }) => {
               />
               {touched.email && errors.email && <Errors>{errors.email}</Errors>}
             </Text>
-            {status.nametaken && <p>{status.nametaken}</p>}
+            {status.nametaken && (
+              <p style={{ color: 'red' }}>{status.nametaken}</p>
+            )}
             <Buttonc>
               <Button className='buttonclass'>Register</Button>
             </Buttonc>
@@ -108,7 +110,7 @@ export default Register
 //styles
 
 const Main = styled.div`
-  height: 84vh;
+  height: 83vh;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -123,6 +125,7 @@ const Form2 = styled(Form)`
 `
 const Title = styled.label`
   text-align: center;
+  font-size: 20px;
   margin: 10%;
 `
 const Text = styled.div`
@@ -137,7 +140,6 @@ const Input = styled(Field)`
   margin-bottom: 5%;
   font-family: 'Rajdhani', sans-serif;
   text-align: center;
-  
 `
 const Buttonc = styled.div`
   display: flex;
@@ -159,7 +161,7 @@ const Button = styled.button`
   font-family: 'Rajdhani', sans-serif;
 `
 const Newlink = styled.p`
-  font-size: 10px;
+  font-size: 14px;
 `
 const Link1 = styled(Link)`
   color: black;
