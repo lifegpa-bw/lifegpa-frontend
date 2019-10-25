@@ -1,27 +1,40 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import { useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
-import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getUData, setUser } from '../actions'
+import { setUser, clearErr } from '../actions'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { makeStyles } from '@material-ui/core/styles'
+
+const styles = makeStyles({
+  spinner: {
+    color: 'black',
+    marginBottom: '60px'
+  }
+})
 
 const Login = props => {
-  const { user } = useSelector(store => store.User)
+  const { user, isFetching, fetchErr } = useSelector(store => store.User)
   const dispatch = useDispatch()
+
   let storedUsername = localStorage.getItem('username') || ''
   const initialValues = {
     username: storedUsername,
     password: ''
   }
-
+  const classes = styles()
   const history = useHistory()
 
   useEffect(() => {
+    dispatch({ type: clearErr })
+  }, [dispatch])
+
+  useEffect(() => {
     if (user.username) history.push('/dashboard')
-  }, [user])
+  }, [user, history])
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Username must be entered'),
@@ -63,8 +76,18 @@ const Login = props => {
                 <Errors>{errors.password}</Errors>
               )}
             </Text>
+            {isFetching && (
+              <CircularProgress
+                className={classes.spinner}
+                thickness={5}
+                size='60px'
+              />
+            )}
+            {fetchErr && <p style={{ color: 'red' }}>{fetchErr}</p>}
             <Buttonc>
-              <Button className='buttonclass'>Login</Button>
+              <Button disabled={isFetching} className='buttonclass'>
+                Login
+              </Button>
             </Buttonc>
           </Form2>
         )}
@@ -89,7 +112,6 @@ const Main = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  
 `
 const Form2 = styled(Form)`
   border: 1px solid black;
@@ -112,13 +134,12 @@ const Input = styled(Field)`
   margin-bottom: 5%;
   font-family: 'Rajdhani', sans-serif;
   text-align: center;
-  
 `
 const Buttonc = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  &:hover .buttonclass{
+  &:hover .buttonclass {
     background-color: black;
     color: #fff;
   }
@@ -147,26 +168,3 @@ const Errors = styled.p`
   font-size: 1rem;
   text-align: center;
 `
-/*
-            .post(`https://reqres.in/api/login`, {
-              email: 'eve.holt@reqres.in',
-              password: 'cityslicka'
-            })
-axios
-            .post(`https://reqres.in/api/login`, {
-              email: 'eve.holt@reqres.in',
-              password: 'cityslicka'
-            })
-            // .post(`https://bw-life-gpa.herokuapp.com/login`, values)
-            .then(res => {
-              console.log('login response', res.data)
-              localStorage.setItem('token', 'thisisajwttokenyessir')
-              use
-              history.push('/dashboard')
-            })
-            .catch(err => {
-              console.log('error on login:', err.response)
-            })
-
-
-*/
