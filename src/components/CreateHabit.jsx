@@ -104,7 +104,7 @@ const Habits = props => {
                 <option value="category5">Cateogry 5</option>
               </Field> */}
 
-            <Button type='submit'>Add</Button>
+            <Button type='submit'>{editID ? 'Done' : 'Add'}</Button>
           </HabitForm>
           <Guide>
             <GuideMain>Your Habits</GuideMain>
