@@ -166,3 +166,10 @@ html {
   border-radius: 5px;
   color: red;
 }
+
+.nav {
+  background: black;
+}
+.navtext {
+  color: #ffeb38;
+}

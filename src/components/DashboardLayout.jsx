@@ -158,7 +158,7 @@ const DashboardLayout = props => {
           <ListItemText primary='Daily Report' />
         </ListItem>
 
-        <ListItem
+        {/* <ListItem
           to='/history'
           component={NavLink}
           className={
@@ -171,7 +171,7 @@ const DashboardLayout = props => {
             <TimelineIcon />
           </ListItemIcon>
           <ListItemText primary='History' />
-        </ListItem>
+        </ListItem> */}
 
         <ListItem
           to='/habits'

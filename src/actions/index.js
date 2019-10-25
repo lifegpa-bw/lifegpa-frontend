@@ -7,6 +7,7 @@ import { startFetch } from './startFetch'
 import { editHabit, editHabitTypes } from './editHabit'
 import { resetStore, resetTypes } from './resetStore'
 import { clearErr } from './clearErr'
+import { perfHabit, perfHabitTypes } from './performedHabit'
 
 export {
   deleteHabit,
@@ -24,5 +25,7 @@ export {
   startFetch,
   resetStore,
   resetTypes,
-  clearErr
+  clearErr,
+  perfHabit,
+  perfHabitTypes
 }

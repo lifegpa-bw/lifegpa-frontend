@@ -105,7 +105,7 @@ export default Login
 //styling
 
 const Main = styled.div`
-  height: 84vh;
+  height: 83vh;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -120,6 +120,7 @@ const Form2 = styled(Form)`
 `
 const Title = styled.label`
   text-align: center;
+  font-size: 20px;
   margin: 10%;
 `
 const Text = styled.div`
@@ -157,7 +158,7 @@ const Button = styled.button`
 `
 
 const Newlink = styled.p`
-  font-size: 10px;
+  font-size: 14px;
 `
 
 const Link1 = styled(Link)`
