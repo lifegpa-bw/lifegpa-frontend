@@ -6,6 +6,7 @@ import { setUser, setUserTypes } from './setUser'
 import { startFetch } from './startFetch'
 import { editHabit, editHabitTypes } from './editHabit'
 import { resetStore, resetTypes } from './resetStore'
+import { clearErr } from './clearErr'
 
 export {
   deleteHabit,
@@ -22,5 +23,6 @@ export {
   setUserTypes,
   startFetch,
   resetStore,
-  resetTypes
+  resetTypes,
+  clearErr
 }

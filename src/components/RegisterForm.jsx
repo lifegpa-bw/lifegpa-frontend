@@ -89,7 +89,9 @@ const Register = ({ errors, touched }) => {
               />
               {touched.email && errors.email && <Errors>{errors.email}</Errors>}
             </Text>
-            {status.nametaken && <p>{status.nametaken}</p>}
+            {status.nametaken && (
+              <p style={{ color: 'red' }}>{status.nametaken}</p>
+            )}
             <Buttonc>
               <Button className='buttonclass'>Register</Button>
             </Buttonc>
@@ -137,7 +139,6 @@ const Input = styled(Field)`
   margin-bottom: 5%;
   font-family: 'Rajdhani', sans-serif;
   text-align: center;
-  
 `
 const Buttonc = styled.div`
   display: flex;

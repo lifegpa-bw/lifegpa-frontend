@@ -51,7 +51,8 @@ const useStyles = makeStyles(theme => ({
     // app bar is always above menu
     zIndex: 3000,
     minHeight: theme.mixins.toolbar.minHeight,
-    backgroundColor: theme.palette.common.black
+    backgroundColor: theme.palette.common.black,
+    fontFamily: theme.rajdhai
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -67,7 +68,7 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     paddingTop: theme.mixins.toolbar.minHeight,
     width: drawerWidth,
-    borderRight: 0,
+    borderRight: '1px solid black',
     backgroundColor: theme.palette.grey[300]
   },
   modal: {
@@ -83,7 +84,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   navLink: {
-    // backgroundColor: 'white',
     color: 'black',
     //nav here
     transition: 'background 0.3s',
@@ -98,9 +98,9 @@ const useStyles = makeStyles(theme => ({
   userProfile: {
     width: drawerWidth,
     position: 'fixed',
-    bottom: 0
-    // borderRight: '1px solid black',
-    // backgroundColor: 'white'
+    bottom: 0,
+    borderRight: '1px solid black',
+    fontFamily: 'Rajdhani'
   }
 }))
 
@@ -114,7 +114,6 @@ const DashboardLayout = props => {
   const history = useHistory()
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
-  console.log('username in dashboard')
   const logout = () => {
     // clear user data from store
     dispatch(resetStore())

@@ -6,11 +6,13 @@ import {
   setUserTypes,
   startFetch,
   resetTypes,
-  editHabitTypes
+  editHabitTypes,
+  clearErr
 } from '../actions'
 
 const initialState = {
   isFetching: false,
+  fetchErr: null,
   user: {},
   dailyReport: {}
 }
@@ -32,15 +34,36 @@ function userReducer(state = initialState, action) {
         }
       }
 
+    case startFetch:
+      return {
+        ...state,
+        isFetching: true,
+        fetchErr: null
+      }
+
+    case clearErr:
+      return {
+        ...state,
+        isFetching: false,
+        fetchErr: null
+      }
+
     case setUserTypes.SUCCESS:
       return {
         ...state,
         isFetching: false,
+        fetchErr: null,
         user: {
           username: action.payload
         }
       }
 
+    case setUserTypes.FAIL:
+      return {
+        ...state,
+        isFetching: false,
+        fetchErr: action.payload
+      }
     // store  user's daily report in separate object to simplify operations
     case drTypes.SET:
       return {

@@ -41,100 +41,12 @@ function getCurrentDate() {
   return `Today ${month} ${day}${nth(day)}, Did you... ?`
 }
 
-const reports = [
-  {
-    id: uuid(),
-    title: 'Run 10 km',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Walk 10 km',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Eat fruit',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Have breakfast early',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Work during lunch',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Make the bed',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Open slack',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Do housework',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Write ideas in Post-it',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Drink less alcohol',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Study spanish',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Use forks correctly',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Call mum',
-    done: false,
-    className: ''
-  },
-  {
-    id: uuid(),
-    title: 'Call daddy',
-    done: false,
-    className: ''
-  }
-]
-
 export default function DailyApprovals() {
-  const [state, setState] = useState({ data: reports })
-  const dispatch = useDispatch()
   const { dailyReport } = useSelector(store => store.User)
+  const dispatch = useDispatch()
 
   console.log('daily report in store from DailyApprovals:', dailyReport)
-
+  /*
   function onYesHandle(id) {
     setState(state => ({
       data: state.data.map(item => {
@@ -166,31 +78,35 @@ export default function DailyApprovals() {
       })
     }))
   }
-
+*/
   return (
     <div className='wrapper'>
       <p className='daily-report'>Daily Report</p>
       <p className='daily-report currDate'>{getCurrentDate()}</p>
       <hr />
 
-      {state.data.map(report => (
+      {dailyReport.habits.map(habit => (
         <div
-          key={report.id}
+          key={habit.id}
           className={
-            report.done ? `${report.className} report` : `hidden report`
+            habit.performed ? `${habit.className} report` : `hidden report`
           }
         >
-          <div className='reportTitle'>{report.title}</div>
+          <div className='reportTitle'>{habit.description}</div>
 
           <div>
             <button
               className='btn'
               id='btn1'
-              onClick={() => onYesHandle(report.id)}
+              // onClick={() => onYesHandle(report.id)}
             >
               Yes
             </button>
-            <button class='btn' id='btn2' onClick={() => onNoHandle(report.id)}>
+            <button
+              className='btn'
+              id='btn2'
+              // onClick={() => onNoHandle(report.id)}
+            >
               No
             </button>
           </div>
